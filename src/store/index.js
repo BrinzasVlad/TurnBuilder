@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Attribute from '@/utils/Attribute.js'
 import AttributeTypes from '../utils/AttributeTypes.js'
 
 Vue.use(Vuex)
@@ -17,8 +18,9 @@ export default new Vuex.Store({
         width: 3,
         attributes: []
       },
-      pieces: []
-      /* TODO: data for state / rules */
+      pieces: [],
+      /* TODO: data for state */
+      rules: []
     }
   },
   mutations: {
@@ -29,8 +31,8 @@ export default new Vuex.Store({
     addPlayerAttribute (state) {
       addEmptyAttribute(state.gameSpec.players.attributes)
     },
-    alterPlayerAttribute (state, { name, newValue }) {
-      alterAttribute(state.gameSpec.players.attributes, name, newValue)
+    alterPlayerAttribute (state, { attributeName, propertyName, newValue }) {
+      alterAttribute(state.gameSpec.players.attributes, attributeName, propertyName, newValue)
     },
     removePlayerAttribute (state, name) {
       removeAttribute(state.gameSpec.players.attributes, name)
@@ -45,8 +47,8 @@ export default new Vuex.Store({
     addTileAttribute (state) {
       addEmptyAttribute(state.gameSpec.grid.attributes)
     },
-    alterTileAttribute (state, { name, newValue }) {
-      alterAttribute(state.gameSpec.grid.attributes, name, newValue)
+    alterTileAttribute (state, { attributeName, propertyName, newValue }) {
+      alterAttribute(state.gameSpec.grid.attributes, attributeName, propertyName, newValue)
     },
     removeTileAttribute (state, name) {
       removeAttribute(state.gameSpec.grid.attributes, name)
@@ -57,8 +59,8 @@ export default new Vuex.Store({
         name: '',
         icon: 'circle.png',
         attributes: [
-          { name: 'Owner', type: AttributeTypes.PLAYER },
-          { name: 'Position', type: AttributeTypes.TILE }
+          new Attribute('Owner', AttributeTypes.PLAYER, false),
+          new Attribute('Position', AttributeTypes.TILE, false)
         ]
       })
     },
@@ -75,10 +77,10 @@ export default new Vuex.Store({
       const pieceAttributeList = state.gameSpec.pieces[pieceIndex].attributes
       addEmptyAttribute(pieceAttributeList)
     },
-    alterPieceAlterAttribute (state, { pieceName, attributeName, newValue }) {
+    alterPieceAlterAttribute (state, { pieceName, attributeName, propertyName, newValue }) {
       const pieceIndex = state.gameSpec.pieces.findIndex(piece => piece.name === pieceName)
       const pieceAttributeList = state.gameSpec.pieces[pieceIndex].attributes
-      alterAttribute(pieceAttributeList, attributeName, newValue)
+      alterAttribute(pieceAttributeList, attributeName, propertyName, newValue)
     },
     alterPieceRemoveAttribute (state, { pieceName, attributeName }) {
       const pieceIndex = state.gameSpec.pieces.findIndex(piece => piece.name === pieceName)
@@ -99,12 +101,12 @@ export default new Vuex.Store({
    because I was entirely unable to access any of the methods I had added and the modified-Array
    instances were replaced with regular (probably modified?) Arrays - I checked with <var>.constructor.name. */
 function addEmptyAttribute (attributeList) {
-  attributeList.push({ name: '', type: '' })
+  attributeList.push(new Attribute())
 }
 
-function alterAttribute (attributeList, attributeName, newValue) {
-  const attributeIndex = attributeList.findIndex(attribute => attribute.name === attributeName)
-  attributeList.splice(attributeIndex, 1, newValue)
+function alterAttribute (attributeList, attributeName, propertyName, newValue) {
+  const attribute = attributeList.find(attribute => attribute.name === attributeName)
+  attribute[propertyName] = newValue
 }
 
 function removeAttribute (attributeList, attributeName) {

@@ -29,14 +29,18 @@ export default {
   },
   methods: {
     renameTileAttribute (index, newName) {
-      const oldAttribute = this.tileAttributes[index]
-      const newAttribute = { ...oldAttribute, name: newName }
-      this.$store.commit('alterTileAttribute', { name: oldAttribute.name, newValue: newAttribute })
+      const attribute = this.tileAttributes[index]
+      this.$store.commit(
+        'alterTileAttribute',
+        { attributeName: attribute.name, propertyName: 'name', newValue: newName }
+      )
     },
     retypeTileAttribute (index, newType) {
-      const oldAttribute = this.tileAttributes[index]
-      const newAttribute = { ...oldAttribute, type: newType }
-      this.$store.commit('alterTileAttribute', { name: oldAttribute.name, newValue: newAttribute })
+      const attribute = this.tileAttributes[index]
+      this.$store.commit(
+        'alterTileAttribute',
+        { attributeName: attribute.name, propertyName: 'type', newValue: newType }
+      )
     },
     addTileAttribute () {
       this.$store.commit('addTileAttribute')

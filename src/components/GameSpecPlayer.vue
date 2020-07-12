@@ -29,14 +29,18 @@ export default {
   },
   methods: {
     renamePlayerAttribute (index, newName) {
-      const oldAttribute = this.playerAttributes[index]
-      const newAttribute = { ...oldAttribute, name: newName }
-      this.$store.commit('alterPlayerAttribute', { name: oldAttribute.name, newValue: newAttribute })
+      const attribute = this.playerAttributes[index]
+      this.$store.commit(
+        'alterPlayerAttribute',
+        { attibuteName: attribute.name, propertyName: 'name', newValue: newName }
+      )
     },
     retypePlayerAttribute (index, newType) {
-      const oldAttribute = this.playerAttributes[index]
-      const newAttribute = { ...oldAttribute, type: newType }
-      this.$store.commit('alterPlayerAttribute', { name: oldAttribute.name, newValue: newAttribute })
+      const attribute = this.playerAttributes[index]
+      this.$store.commit(
+        'alterPlayerAttribute',
+        { attributeName: attribute.name, propertyName: 'type', newValue: newType }
+      )
     },
     addPlayerAttribute () {
       this.$store.commit('addPlayerAttribute')

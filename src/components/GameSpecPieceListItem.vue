@@ -44,21 +44,21 @@ export default {
       this.$emit('piece-name-change', newName)
     },
     renamePieceAttribute (index, newName) {
-      const oldAttribute = this.piece.attributes[index]
-      const newAttribute = { ...oldAttribute, name: newName }
+      const attribute = this.piece.attributes[index]
       this.$store.commit('alterPieceAlterAttribute', {
         pieceName: this.piece.name,
-        attributeName: oldAttribute.name,
-        newValue: newAttribute
+        attributeName: attribute.name,
+        propertyName: 'name',
+        newValue: newName
       })
     },
     retypePieceAttribute (index, newType) {
-      const oldAttribute = this.piece.attributes[index]
-      const newAttribute = { ...oldAttribute, type: newType }
+      const attribute = this.piece.attributes[index]
       this.$store.commit('alterPieceAlterAttribute', {
         pieceName: this.piece.name,
-        attributeName: oldAttribute.name,
-        newValue: newAttribute
+        attributeName: attribute.name,
+        propertyName: 'type',
+        newValue: newType
       })
     },
     addPieceAttribute () {
