@@ -12,10 +12,29 @@ const factory = (attributeName = '', attributeType = AttributeTypes.WORD) => {
   })
 }
 describe('GameSpecAttributeListItem', () => {
-  it.only('is populated with the correct attribute values', () => {
+  it('is populated with the correct attribute values', () => {
     const wrapper = factory('TestAttribute', AttributeTypes.NUMBER)
 
     expect(wrapper.find('.attribute-name').element.value).toEqual('TestAttribute')
     expect(wrapper.find('.attribute-type').vm.value).toEqual(AttributeTypes.NUMBER)
+  })
+  it('emits correct update event when attribute name edited and clicked away from', () => {
+    const wrapper = factory('TestAttribute', AttributeTypes.NUMBER)
+
+    const nameInput = wrapper.find('.attribute-name')
+    nameInput.element.value = 'ChangedAttribute'
+    nameInput.trigger('blur')
+
+    expect(wrapper.emitted('attribute-name-change')).toBeTruthy()
+    expect(wrapper.emitted('attribute-name-change')[0]).toEqual(['ChangedAttribute'])
+  })
+  it('emits correct update event when attribute type changed', () => {
+    const wrapper = factory('TestAttribute', AttributeTypes.NUMBER)
+
+    const attributeSelect = wrapper.find('.attribute-type')
+    attributeSelect.vm.select(AttributeTypes.WORD)
+
+    expect(wrapper.emitted('attribute-type-change')).toBeTruthy()
+    expect(wrapper.emitted('attribute-type-change')[0]).toEqual([AttributeTypes.WORD])
   })
 })
