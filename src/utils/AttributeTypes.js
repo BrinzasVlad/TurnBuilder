@@ -1,4 +1,4 @@
-import { addAllValuesProperty } from '../utils/EnumUtils.js'
+import { addAllValuesProperty } from '@/utils/EnumUtils.js'
 
 export default Object.freeze(addAllValuesProperty({
   NUMBER: 'number',
