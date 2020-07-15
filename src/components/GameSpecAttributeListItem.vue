@@ -12,6 +12,7 @@
     <span> of type </span>
     <v-select
       class="attribute-type"
+      :clearable="false"
       :options="AttributeTypes.allValues"
       :value="attribute.type"
       @input="typeChange"
@@ -26,15 +27,10 @@
 </template>
 
 <script>
-import AttributeTypes from '../utils/AttributeTypes.js'
-import vSelect from 'vue-select'
-import 'vue-select/dist/vue-select.css'
+import AttributeTypes from '@/utils/AttributeTypes.js'
 
 export default {
   name: 'GameSpecAttributeListItem',
-  components: {
-    vSelect
-  },
   computed: {
     console: () => console,
     AttributeTypes: () => AttributeTypes
