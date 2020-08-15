@@ -28,9 +28,13 @@
 
 <script>
 import AttributeTypes from '@/utils/AttributeTypes.js'
+import vSelect from 'vue-select'
 
 export default {
   name: 'GameSpecAttributeListItem',
+  components: {
+    vSelect
+  },
   computed: {
     console: () => console,
     AttributeTypes: () => AttributeTypes
