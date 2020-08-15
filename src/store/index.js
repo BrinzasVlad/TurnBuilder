@@ -19,7 +19,7 @@ export default new Vuex.Store({
         attributes: []
       },
       pieces: [],
-      /* TODO: data for state */
+      gameAttributes: [],
       rules: []
     }
   },
@@ -86,11 +86,21 @@ export default new Vuex.Store({
       const pieceIndex = state.gameSpec.pieces.findIndex(piece => piece.name === pieceName)
       const pieceAttributeList = state.gameSpec.pieces[pieceIndex].attributes
       removeAttribute(pieceAttributeList, attributeName)
+    },
+    // Game Attributes
+    addGameAttribute (state) {
+      addEmptyAttribute(state.gameSpec.gameAttributes)
+    },
+    alterGameAttribute (state, { attributeName, propertyName, newValue }) {
+      alterAttribute(state.gameSpec.gameAttributes, attributeName, propertyName, newValue)
+    },
+    removeGameAttribute (state, name) {
+      removeAttribute(state.gameSpec.gameAttributes, name)
     }
-    /* TODO: synchronous changes to the above */
+    /* TODO: changes to rules */
   },
   actions: {
-    /* TODO: do we even need actions, though?? */
+    /* Do we even need actions, though? */
   },
   modules: {
   }
