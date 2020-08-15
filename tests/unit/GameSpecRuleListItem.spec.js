@@ -35,7 +35,7 @@ describe('GameSpecRuleListItem', () => {
     effectSelect.vm.select('set the value of ... to ...')
 
     const attributeTypeSelect = effectSelect.get('.selector-attribute-type')
-    attributeTypeSelect.vm.select('(game attribute)')
+    attributeTypeSelect.vm.select('game attribute ...')
 
     const attributeNameSelect = attributeTypeSelect.get('.selector-attribute-name')
     attributeNameSelect.vm.select('Spaces Left')
