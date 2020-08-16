@@ -7,8 +7,8 @@
         :options="attributeTypeOptions"
       >
         <template #selected-option="{ label }">
-          <div v-if="label === 'game attribute ...'" style="display: flex; flex-direction: row;">
-            <span>game attribute </span>
+          <div v-if="label === 'game attribute ...'" class="display-row">
+            <span class="keep-whitespace">game attribute </span>
             <game-spec-selector-attribute-game-attr />
           </div>
           <div v-else>
@@ -39,7 +39,5 @@ export default {
 </script>
 
 <style scoped>
-span {
-  white-space: pre-wrap;
-}
+
 </style>

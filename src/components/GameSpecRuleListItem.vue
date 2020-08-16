@@ -1,5 +1,5 @@
 <template>
-    <div class="game-spec-rule-list-item">
+    <div class="game-spec-rule-list-item  display-row">
       <span>When </span>
       <v-select
         class="rule-trigger"
@@ -45,11 +45,5 @@ export default {
 </script>
 
 <style scoped>
-.game-spec-rule-list-item {
-  display: flex;
-  flex-direction: row;
-}
-span {
-  white-space: pre-wrap;
-}
+
 </style>

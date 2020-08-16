@@ -2,8 +2,8 @@
 
 <template>
     <div class="game-spec-piece-list-item">
-      <div class="piece-presentation">
-        <img :src="require('../assets/' + piece.icon)" />
+      <div class="piece-presentation  display-row">
+        <img :src="require('@/assets/' + piece.icon)" />
         <input
           type="text"
           placeholder="Piece name"
@@ -79,9 +79,5 @@ export default {
 #game-spec-piece-list-item {
   display: flex;
   flex-direction: column;
-}
-.piece-presentation {
-    display: flex;
-    flex-direction: row;
 }
 </style>

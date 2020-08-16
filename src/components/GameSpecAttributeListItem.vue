@@ -1,6 +1,6 @@
 <template>
   <div id="game-spec-attribute-list-item">
-    <span>Attribute </span>
+    <span class="keep-whitespace">Attribute </span>
     <input
       type="text"
       placeholder="Attribute name"
@@ -9,7 +9,7 @@
       @blur="nameChange($event.target.value)"
       @keypress.enter="$event.target.blur"
     >
-    <span> of type </span>
+    <span class="keep-whitespace"> of type </span>
     <v-select
       class="attribute-type"
       :clearable="false"

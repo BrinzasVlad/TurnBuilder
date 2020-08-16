@@ -29,4 +29,15 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+/** Preserves whitespace as written, wraps text normally */
+.keep-whitespace {
+  white-space: pre-wrap;
+}
+
+/** Displays child components horizontally in a row */
+.display-row {
+  display: flex;
+  flex-direction: row;
+}
 </style>

@@ -1,8 +1,8 @@
 <template>
-    <div class="game-spec-rule-effect-set-attribute">
-        <span>{{textChunks[0]}}</span>
+    <div class="game-spec-rule-effect-set-attribute  display-row">
+        <span class="keep-whitespace">{{textChunks[0]}}</span>
         <game-spec-selector-attribute />
-        <span>{{textChunks[1]}}</span>
+        <span class="keep-whitespace">{{textChunks[1]}}</span>
         <!-- TODO: value selector -->
     </div>
 </template>
@@ -24,11 +24,5 @@ export default {
 </script>
 
 <style scoped>
-.game-spec-rule-effect-set-attribute {
-  display: flex;
-  flex-direction: row;
-}
-span {
-  white-space: pre-wrap;
-}
+
 </style>

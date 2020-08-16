@@ -44,7 +44,5 @@ export default {
 </script>
 
 <style scoped>
-span {
-  white-space: pre-wrap;
-}
+
 </style>
