@@ -41,7 +41,7 @@ describe('GameSpecRuleListItem', () => {
     attributeNameSelect.vm.select('Spaces Left')
 
     const valueSelect = effectSelect.get('.selector-value-type')
-    valueSelect.vm.select('(number)')
+    valueSelect.vm.select('number: ...')
 
     const valueInput = valueSelect.get('.number-input')
     valueInput.element.value = 4
