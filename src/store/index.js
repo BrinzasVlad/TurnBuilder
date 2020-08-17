@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Attribute from '@/utils/Attribute.js'
 import AttributeTypes from '../utils/AttributeTypes.js'
+import Rule from '@/utils/Rule.js'
 
 Vue.use(Vuex)
 
@@ -55,8 +56,11 @@ export default new Vuex.Store({
     },
     // Pieces
     addPiece (state) {
+      const newPieceNumber = nextNewNumber(state.gameSpec.pieces.map((piece) => piece.name), 'New Piece')
+      const newPieceName = 'New Piece ' + newPieceNumber
+
       state.gameSpec.pieces.push({
-        name: '',
+        name: newPieceName,
         icon: 'circle.png',
         attributes: [
           new Attribute('Owner', AttributeTypes.PLAYER, false),
@@ -64,13 +68,13 @@ export default new Vuex.Store({
         ]
       })
     },
-    alterPieceName (state, { name, newName }) {
-      const index = state.gameSpec.pieces.findIndex(piece => piece.name === name)
-      state.gameSpec.pieces[index].name = newName
+    alterPieceName (state, { pieceName, newName }) {
+      const pieceIndex = state.gameSpec.pieces.findIndex(piece => piece.name === pieceName)
+      state.gameSpec.pieces[pieceIndex].name = newName
     },
-    alterPieceIcon (state, { name, newIcon }) {
-      const index = state.gameSpec.pieces.findIndex(piece => piece.name === name)
-      state.gameSpec.pieces[index].icon = newIcon
+    alterPieceIcon (state, { pieceName, newIcon }) {
+      const pieceIndex = state.gameSpec.pieces.findIndex(piece => piece.name === pieceName)
+      state.gameSpec.pieces[pieceIndex].icon = newIcon
     },
     alterPieceAddAttribute (state, pieceName) {
       const pieceIndex = state.gameSpec.pieces.findIndex(piece => piece.name === pieceName)
@@ -87,6 +91,10 @@ export default new Vuex.Store({
       const pieceAttributeList = state.gameSpec.pieces[pieceIndex].attributes
       removeAttribute(pieceAttributeList, attributeName)
     },
+    removePiece (state, pieceName) {
+      const pieceIndex = state.gameSpec.pieces.findIndex(piece => piece.name === pieceName)
+      state.gameSpec.pieces.splice(pieceIndex, 1)
+    },
     // Game Attributes
     addGameAttribute (state) {
       addEmptyAttribute(state.gameSpec.gameAttributes)
@@ -96,8 +104,11 @@ export default new Vuex.Store({
     },
     removeGameAttribute (state, name) {
       removeAttribute(state.gameSpec.gameAttributes, name)
+    },
+    // Rules
+    addRule (state) {
+      state.gameSpec.rules.push(new Rule())
     }
-    /* TODO: changes to rules */
   },
   actions: {
     /* Do we even need actions, though? */
@@ -111,7 +122,10 @@ export default new Vuex.Store({
    because I was entirely unable to access any of the methods I had added and the modified-Array
    instances were replaced with regular (probably modified?) Arrays - I checked with <var>.constructor.name. */
 function addEmptyAttribute (attributeList) {
-  attributeList.push(new Attribute())
+  const newAttributeNumber = nextNewNumber(attributeList.map((attr) => attr.name), 'New Attribute')
+  const newAttributeName = 'New Attribute ' + newAttributeNumber
+
+  attributeList.push(new Attribute(newAttributeName))
 }
 
 function alterAttribute (attributeList, attributeName, propertyName, newValue) {
@@ -122,4 +136,29 @@ function alterAttribute (attributeList, attributeName, propertyName, newValue) {
 function removeAttribute (attributeList, attributeName) {
   const attributeIndex = attributeList.findIndex(attribute => attribute.name === attributeName)
   attributeList.splice(attributeIndex, 1)
+}
+
+/**
+ * Finds the next number to be given to a newly-created list element.
+ * The number is always one greater than the number associated to the latest unnamed element.
+ *
+ * For example, in a list of ['Cat', 'New Animal 1', 'Dog', 'New Animal 3'], where the
+ * prefix for newly-created animals is 'New Animal', the function returns 4.
+ *
+ * @param {string[]} list A list of names of existing elements
+ * @param {string} newElementPrefix A prefix with which all newly-created elements start
+ */
+function nextNewNumber (list, newElementPrefix) {
+  const unnamedElements = list.filter((name) => {
+    // !!x is a shortcut for converting x to Boolean via double-negation
+    return !!name.match(newElementPrefix)
+  })
+
+  const unnamedElementNumbers =
+    unnamedElements
+      .map((name) => parseInt(name.substring(newElementPrefix.length)))
+      .filter((value) => !isNaN(value))
+
+  if (unnamedElementNumbers.length === 0) return 1
+  else return Math.max(...unnamedElementNumbers) + 1
 }
