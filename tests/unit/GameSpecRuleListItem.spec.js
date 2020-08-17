@@ -40,12 +40,15 @@ describe('GameSpecRuleListItem', () => {
     const attributeNameSelect = attributeTypeSelect.get('.selector-attribute-name')
     attributeNameSelect.vm.select('Spaces Left')
 
-    const valueSelect = effectSelect.get('.selector-value-type')
-    valueSelect.vm.select('number: ...')
+    const valueTypeSelect = effectSelect.get('.selector-value-type')
+    valueTypeSelect.vm.select('number: ...')
 
-    const valueInput = valueSelect.get('.number-input')
-    valueInput.element.value = 4
-    valueInput.trigger('blur')
+    const numberSelect = valueTypeSelect.get('.selector-value-number-type')
+    numberSelect.vm.select('(type a value)')
+
+    const numberInput = numberSelect.get('input')
+    numberInput.element.value = 4
+    numberInput.trigger('blur')
 
     // expect(wrapper.emitted('rule-change')).toBeTruthy()
     // expect(wrapper.emitted('rule-change')[0]).toEqual(/* ...? */)
