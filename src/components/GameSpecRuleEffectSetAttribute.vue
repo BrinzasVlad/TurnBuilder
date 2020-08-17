@@ -3,17 +3,19 @@
         <span class="keep-whitespace">{{textChunks[0]}}</span>
         <game-spec-selector-attribute />
         <span class="keep-whitespace">{{textChunks[1]}}</span>
-        <!-- TODO: value selector -->
+        <game-spec-selector-value />
     </div>
 </template>
 
 <script>
 import GameSpecSelectorAttribute from './GameSpecSelectorAttribute.vue'
+import GameSpecSelectorValue from './GameSpecSelectorValue.vue'
 
 export default {
   name: 'GameSpecRuleEffectSetAttribute',
   components: {
-    GameSpecSelectorAttribute
+    GameSpecSelectorAttribute,
+    GameSpecSelectorValue
   },
   computed: {
     console: () => console,
