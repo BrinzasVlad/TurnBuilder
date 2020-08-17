@@ -1,5 +1,5 @@
 <template>
-    <div class="game-spec-player-count">
+    <div class="game-spec-rule-effect">
       <v-select
         class="rule-effect"
         :clearable="false"
