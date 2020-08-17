@@ -22,7 +22,8 @@ export default {
   props: {
     effect: {
       type: Object,
-      required: true
+      required: false
+      // It's possible to have a newly-instantiated object that has no associated effect yet
     }
   },
   components: {
