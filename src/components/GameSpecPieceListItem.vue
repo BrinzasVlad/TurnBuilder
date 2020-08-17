@@ -11,6 +11,12 @@
           @blur="nameChange($event.target.value)"
           @keypress.enter="$event.target.blur"
         >
+        <button
+          class="remove-button"
+          @click="removeSelf"
+        >
+          Remove
+        </button>
       </div>
       <game-spec-attribute-list
         :attributes="piece.attributes"
@@ -70,6 +76,9 @@ export default {
         pieceName: this.piece.name,
         attributeName: attribute.name
       })
+    },
+    removeSelf () {
+      this.$emit('remove')
     }
   }
 }
@@ -79,5 +88,8 @@ export default {
 #game-spec-piece-list-item {
   display: flex;
   flex-direction: column;
+}
+.remove-button {
+  color: red;
 }
 </style>

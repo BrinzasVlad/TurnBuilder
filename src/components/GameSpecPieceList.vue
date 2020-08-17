@@ -1,5 +1,3 @@
-<!-- TODO: should contain components for displaying / adding / modifying the available pieces -->
-
 <template>
     <div class="game-spec-piece-list">
       <h2>Pieces</h2>
@@ -10,6 +8,7 @@
           :key="piece.name"
           :piece="piece"
           @piece-name-change="(newName) => renamePiece(index, newName)"
+          @remove="removePiece(index)"
         />
         <li class="add-piece-entry">
           <button @click="addPiece">Add new piece...</button>
@@ -35,7 +34,10 @@ export default {
       this.$store.commit('addPiece')
     },
     renamePiece (index, newName) {
-      this.$store.commit('alterPieceName', { name: this.pieces[index].name, newName: newName })
+      this.$store.commit('alterPieceName', { pieceName: this.pieces[index].name, newName: newName })
+    },
+    removePiece (index) {
+      this.$store.commit('removePiece', this.pieces[index].name)
     }
   }
 }
