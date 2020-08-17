@@ -4,11 +4,12 @@
       <v-select
         class="selector-value-type"
         :clearable="false"
-        :options="AttributeTypes.allValues"
+        :options="valueTypeOptions"
+        :getOptionLabel="(option) => option.text + ': ...'"
       >
-        <template #selected-option="{ label }">
-          <span class="keep-whitespace">{{ label }}: </span>
-          <component :is="selectorNameForType(label)" />
+        <template #selected-option="{ text, component }">
+          <span class="keep-whitespace">{{ text }}: </span>
+          <component :is="component" />
         </template>
       </v-select>
     </div>
@@ -27,14 +28,20 @@ export default {
   },
   computed: {
     console: () => console,
-    AttributeTypes: () => AttributeTypes
-  },
-  methods: {
-    selectorNameForType (valueType) {
-      switch (valueType) {
-        case AttributeTypes.NUMBER: return GameSpecSelectorValueNumber.name
-        default: throw new Error('Value type ' + valueType + ' does not have an associated selector component')
-      }
+    valueTypeOptions () {
+      return AttributeTypes.allValues.map((valueType) => {
+        let associatedComponentName
+        switch (valueType) {
+          case AttributeTypes.NUMBER: associatedComponentName = GameSpecSelectorValueNumber.name; break
+          case AttributeTypes.WORD: associatedComponentName = 'not yet implemented'; break
+          case AttributeTypes.PIECE: associatedComponentName = 'not yet implemented'; break
+          case AttributeTypes.TILE: associatedComponentName = 'not yet implemented'; break
+          case AttributeTypes.PLAYER: associatedComponentName = 'not yet implemented'; break
+          default: throw new Error('Value type ' + valueType + ' does not have an associated selector component')
+        }
+
+        return { component: associatedComponentName, text: valueType }
+      })
     }
   }
 }
