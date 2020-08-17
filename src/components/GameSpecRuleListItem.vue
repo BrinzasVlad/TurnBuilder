@@ -1,6 +1,6 @@
 <template>
     <div class="game-spec-rule-list-item  display-row">
-      <span>When </span>
+      <span class="keep-whitespace">When </span>
       <v-select
         class="rule-trigger"
         :clearable="false"
@@ -8,7 +8,7 @@
         :value="rule.trigger"
         @input="(newTrigger) => triggerChange(newTrigger)"
       />
-      <span>, </span>
+      <span class="keep-whitespace">, </span>
       <game-spec-rule-effect
         :effect="rule.effect"
       />

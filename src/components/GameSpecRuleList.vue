@@ -1,17 +1,17 @@
 <template>
     <div class="game-spec-rule-list">
       <h2>Game rules:</h2>
-      <ul>
+      <ol>
         <li
-          is="game-spec-rule-list-item"
           v-for="ruleWithKey in rulesWithKeys"
           :key="ruleWithKey.key"
-          :rule="ruleWithKey.rule"
-        />
+        >
+          <game-spec-rule-list-item :rule="ruleWithKey.rule" />
+        </li>
         <li class="add-rule-entry">
           <button @click="addRule">Add new rule...</button>
         </li>
-      </ul>
+      </ol>
     </div>
 </template>
 

@@ -3,13 +3,15 @@
       <h2>Pieces</h2>
       <ul>
         <li
-          is="game-spec-piece-list-item"
           v-for="(piece, index) in pieces"
           :key="piece.name"
-          :piece="piece"
-          @piece-name-change="(newName) => renamePiece(index, newName)"
-          @remove="removePiece(index)"
-        />
+        >
+          <game-spec-piece-list-item
+            :piece="piece"
+            @piece-name-change="(newName) => renamePiece(index, newName)"
+            @remove="removePiece(index)"
+          />
+        </li>
         <li class="add-piece-entry">
           <button @click="addPiece">Add new piece...</button>
         </li>
