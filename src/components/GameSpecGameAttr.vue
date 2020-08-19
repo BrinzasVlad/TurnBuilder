@@ -28,7 +28,7 @@ export default {
       const attribute = this.gameAttributes[index]
       this.$store.commit(
         'alterGameAttribute',
-        { attibuteName: attribute.name, propertyName: 'name', newValue: newName }
+        { attributeName: attribute.name, propertyName: 'name', newValue: newName }
       )
     },
     retypeGameAttribute (index, newType) {
