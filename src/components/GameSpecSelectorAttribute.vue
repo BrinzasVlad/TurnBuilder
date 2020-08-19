@@ -4,16 +4,17 @@
       <v-select
         class="selector-attribute-type"
         :clearable="false"
-        :options="attributeTypeOptions"
+        :options="attributeSelectorsList"
+        :value="currentOption"
+        @input="(newOption) => selectionChange(newOption.selectorClass)"
+        label="text"
       >
-        <template #selected-option="{ label }">
-          <div v-if="label === 'game attribute ...'" class="display-row">
-            <span class="keep-whitespace">game attribute </span>
-            <game-spec-selector-attribute-game-attr />
-          </div>
-          <div v-else>
-            <!-- TODO: The other options (such as "from ... attribute ...") -->
-          </div>
+        <template #selected-option="{ component }">
+          <component
+            :is="component"
+            :selector="selector"
+            @change="(newChildSelectorValue) => childSelectorChange(newChildSelectorValue)"
+          />
         </template>
       </v-select>
     </div>
@@ -21,18 +22,50 @@
 
 <script>
 import vSelect from 'vue-select'
+import SelectorAttribute from '@/utils/SelectorAttribute'
 import GameSpecSelectorAttributeGameAttr from './GameSpecSelectorAttributeGameAttr.vue'
 
 export default {
   name: 'GameSpecSelectorAttribute',
+  props: {
+    selector: {
+      type: SelectorAttribute,
+      required: false
+    }
+  },
   components: {
     vSelect,
     GameSpecSelectorAttributeGameAttr
   },
   computed: {
     console: () => console,
-    attributeTypeOptions () {
-      return ['game attribute ...']
+    attributeSelectorsList () {
+      const attributeSelectorsToAdd = [
+        GameSpecSelectorAttributeGameAttr
+      ]
+      return attributeSelectorsToAdd.map((selector) => {
+        return {
+          component: selector.name,
+          text: selector.computed.text(),
+          selectorClass: selector.computed.selectorClass()
+        }
+      })
+    },
+    currentOption () {
+      if (this.selector) {
+        return this.attributeSelectorsList.find((option) => {
+          const currentSelectorClass = this.selector.constructor
+          return option.selectorClass === currentSelectorClass
+        })
+      } else return null
+    }
+  },
+  methods: {
+    childSelectorChange (newSelectorValue) {
+      this.$emit('change', newSelectorValue)
+    },
+    selectionChange (NewSelectorClass) {
+      this.$emit('change', new NewSelectorClass())
     }
   }
 }

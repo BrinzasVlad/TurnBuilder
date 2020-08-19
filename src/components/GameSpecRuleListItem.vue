@@ -11,6 +11,7 @@
       <span class="keep-whitespace">, </span>
       <game-spec-rule-effect
         :effect="rule.effect"
+        @change="(newEffect) => effectChange(newEffect)"
       />
     </div>
 </template>
@@ -39,6 +40,9 @@ export default {
   methods: {
     triggerChange (newTrigger) {
       this.$emit('rule-trigger-change', newTrigger)
+    },
+    effectChange (newEffect) {
+      this.$emit('rule-effect-change', newEffect)
     }
   }
 }

@@ -108,6 +108,10 @@ export default new Vuex.Store({
     // Rules
     addRule (state) {
       state.gameSpec.rules.push(new Rule())
+    },
+    alterRule (state, { index, propertyName, newValue }) {
+      // TODO: it might be better to identify rules by some unique id than by their index
+      state.gameSpec.rules[index][propertyName] = newValue
     }
   },
   actions: {

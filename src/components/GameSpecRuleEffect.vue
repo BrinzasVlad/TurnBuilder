@@ -4,10 +4,16 @@
         class="rule-effect"
         :clearable="false"
         :options="effectsList"
+        :value="currentOption"
+        @input="(newOption) => selectionChange(newOption.effectClass)"
         label="text"
       >
         <template #selected-option="{ component }" class="vs__selected">
-          <component :is="component" />
+          <component
+            :is="component"
+            :effect="effect"
+            @change="(newChildEffectValue) => childEffectChange(newChildEffectValue)"
+          />
         </template>
       </v-select>
     </div>
@@ -37,8 +43,28 @@ export default {
         GameSpecRuleEffectSetAttribute
       ]
       return effectsToAdd.map(effect => {
-        return { component: effect.name, text: effect.computed.text() }
+        return {
+          component: effect.name,
+          text: effect.computed.text(),
+          effectClass: effect.computed.effectClass()
+        }
       })
+    },
+    currentOption () {
+      if (this.effect) {
+        return this.effectsList.find((option) => {
+          const currentEffectClass = this.effect.constructor
+          return option.effectClass === currentEffectClass
+        })
+      } else return null
+    }
+  },
+  methods: {
+    childEffectChange (newEffect) {
+      this.$emit('change', newEffect)
+    },
+    selectionChange (NewEffectClass) {
+      this.$emit('change', new NewEffectClass())
     }
   }
 }

@@ -3,10 +3,14 @@
       <h2>Game rules:</h2>
       <ol>
         <li
-          v-for="ruleWithKey in rulesWithKeys"
+          v-for="(ruleWithKey, index) in rulesWithKeys"
           :key="ruleWithKey.key"
         >
-          <game-spec-rule-list-item :rule="ruleWithKey.rule" />
+          <game-spec-rule-list-item
+            :rule="ruleWithKey.rule"
+            @rule-trigger-change="(newTrigger) => ruleTriggerChange(index, newTrigger)"
+            @rule-effect-change="(newEffect) => ruleEffectChange(index, newEffect)"
+          />
         </li>
         <li class="add-rule-entry">
           <button @click="addRule">Add new rule...</button>
@@ -28,6 +32,11 @@ export default {
   computed: {
     console: () => console,
     rulesWithKeys () {
+      // FIXME: this is not really working; a different solution should be found!
+      // Currently, this will update the count whenever the list of rules changes.
+      // While this does fix the problem of providing unique keys for all the
+      // elements in the v-for, it does so at the cost of essentially re-rendering
+      // the v-for every time 
       return this.$store.state.gameSpec.rules.map((rule) => {
         return { key: keyCounter++, rule: rule }
       })
@@ -36,6 +45,12 @@ export default {
   methods: {
     addRule () {
       this.$store.commit('addRule')
+    },
+    ruleTriggerChange (index, newTrigger) {
+      this.$store.commit('alterRule', { index, propertyName: 'trigger', newValue: newTrigger })
+    },
+    ruleEffectChange (index, newEffect) {
+      this.$store.commit('alterRule', { index, propertyName: 'effect', newValue: newEffect })
     }
   }
 }
