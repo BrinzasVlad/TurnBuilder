@@ -32,7 +32,7 @@ export default {
       const attribute = this.playerAttributes[index]
       this.$store.commit(
         'alterPlayerAttribute',
-        { attibuteName: attribute.name, propertyName: 'name', newValue: newName }
+        { attributeName: attribute.name, propertyName: 'name', newValue: newName }
       )
     },
     retypePlayerAttribute (index, newType) {
