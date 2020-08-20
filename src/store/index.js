@@ -26,9 +26,18 @@ export default new Vuex.Store({
         new Attribute('Current Player', AttributeTypes.PLAYER, false)
       ],
       rules: []
+    },
+    gamePlay: {
+      players: [],
+      grid: {
+        tiles: []
+      },
+      pieces: [],
+      gameAttributes: {}
     }
   },
   mutations: {
+    /// GAME SPEC MUTATIONS
     // Players
     setPlayerCount (state, value) {
       state.gameSpec.players.number = value
@@ -116,11 +125,56 @@ export default new Vuex.Store({
     alterRule (state, { index, propertyName, newValue }) {
       // TODO: it might be better to identify rules by some unique id than by their index
       state.gameSpec.rules[index][propertyName] = newValue
+    },
+    /// GAME PLAY MUTATIONS
+    // Set / Reset
+    gamePlayReset (state) {
+      state.gamePlay = {
+        players: [],
+        grid: {
+          tiles: []
+        },
+        pieces: [],
+        gameAttributes: {}
+      }
+    },
+    gamePlaySet (state) {
+      // Players
+      for (let playerNumber = 0; playerNumber < state.gameSpec.players.number; playerNumber++) {
+        const player = {}
+        state.gameSpec.players.attributes.forEach((attribute) => {
+          // For now, just declare it; in the future, we might put a default value there
+          player[attribute.name] = undefined
+        })
+
+        state.gamePlay.players[playerNumber] = player
+      }
+
+      // Tiles
+      for (let row = 0; row < state.gameSpec.grid.height; row++) {
+        state.gamePlay.grid.tiles[row] = []
+        for (let col = 0; col < state.gameSpec.grid.width; col++) {
+          const tile = {}
+          state.gameSpec.grid.attributes.forEach((attribute) => {
+            // For now, just declare it; in the future, we might put a default value there
+            tile[attribute.name] = undefined
+          })
+
+          state.gamePlay.grid.tiles[row][col] = tile
+        }
+      }
+
+      // Game Attributes
+      state.gameSpec.gameAttributes.forEach((attribute) => {
+        // For now, just declare it; in the future, we might put a default value there
+        state.gamePlay.gameAttributes[attribute.name] = undefined
+      })
     }
   },
   actions: {
     /* Do we even need actions, though? */
   },
+  /* TODO: maybe make getters, so that the internal structure of the store can vary without breaking dependents */
   modules: {
   }
 })

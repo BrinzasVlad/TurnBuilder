@@ -1,9 +1,9 @@
 <template>
   <div class="game-spec-grid-dimensions">
-    <span>Grid dimensions:</span>
-    <br>
+    <h3>Grid dimensions:</h3>
     <label for="gridWidth">Width: </label>
     <input id="gridWidth" type="number" v-model.number="gridWidth" />
+    <br>
     <label for="gridHeight">Height: </label>
     <input id="gridHeight" type="number" v-model.number="gridHeight" />
   </div>
@@ -35,5 +35,7 @@ export default {
 </script>
 
 <style scoped>
-
+h3 {
+  text-align: left;
+}
 </style>
