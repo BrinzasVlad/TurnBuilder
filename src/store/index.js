@@ -12,7 +12,9 @@ export default new Vuex.Store({
     gameSpec: {
       players: {
         number: 2,
-        attributes: []
+        attributes: [
+          new Attribute('Next Player', AttributeTypes.PLAYER, false)
+        ]
       },
       grid: {
         height: 3,
@@ -20,7 +22,9 @@ export default new Vuex.Store({
         attributes: []
       },
       pieces: [],
-      gameAttributes: [],
+      gameAttributes: [
+        new Attribute('Current Player', AttributeTypes.PLAYER, false)
+      ],
       rules: []
     }
   },

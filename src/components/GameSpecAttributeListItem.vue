@@ -6,6 +6,7 @@
       placeholder="Attribute name"
       class="attribute-name"
       :value="attribute.name"
+      :disabled="!attribute.isEditable"
       @blur="nameChange($event.target.value)"
       @keypress.enter="$event.target.blur"
     >
@@ -15,10 +16,12 @@
       :clearable="false"
       :options="AttributeTypes.allValues"
       :value="attribute.type"
+      :disabled="!attribute.isEditable"
       @input="typeChange"
     />
     <button
       class="remove-button"
+      :disabled="!attribute.isEditable"
       @click="removeSelf"
     >
       Remove
