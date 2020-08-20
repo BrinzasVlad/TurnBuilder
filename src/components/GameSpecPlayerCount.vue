@@ -1,6 +1,6 @@
 <template>
   <div class="game-spec-player-count">
-    <label for="playerCount">Number of players:</label>
+    <label for="playerCount">Number of players: </label>
     <input id="playerCount" type="number" v-model.number="playerCount" />
   </div>
 </template>
