@@ -1,13 +1,13 @@
 <!-- This is a ready-made template for starting a new component -->
 
 <template>
-    <div class="game-spec-player-count">
+    <div class="game-">
     </div>
 </template>
 
 <script>
 export default {
-  name: 'GameSpecPlayerCount',
+  name: 'Game',
   computed: {
     console: () => console
   }
