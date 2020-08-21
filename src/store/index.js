@@ -19,7 +19,11 @@ export default new Vuex.Store({
       grid: {
         height: 3,
         width: 3,
-        attributes: []
+        attributes: [
+          new Attribute('Row', AttributeTypes.NUMBER, false),
+          new Attribute('Column', AttributeTypes.NUMBER, false),
+          new Attribute('Content', AttributeTypes.PIECE, false)
+        ]
       },
       pieces: [],
       gameAttributes: [
@@ -159,6 +163,10 @@ export default new Vuex.Store({
             // For now, just declare it; in the future, we might put a default value there
             tile[attribute.name] = undefined
           })
+
+          tile.Row = row
+          tile.Col = col
+          tile.Content = null
 
           state.gamePlay.grid.tiles[row][col] = tile
         }
