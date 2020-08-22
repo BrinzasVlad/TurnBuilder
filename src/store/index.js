@@ -152,6 +152,8 @@ export default new Vuex.Store({
           player[attribute.name] = undefined
         })
 
+        player.playerNumber = playerNumber + 1
+
         state.gamePlay.players[playerNumber] = player
       }
 
