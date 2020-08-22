@@ -15,6 +15,7 @@ import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from '@/utils/SelectorValue'
 import GameSpecSelectorValueNumber from './GameSpecSelectorValueNumber.vue'
 import GameSpecSelectorValueTile from './GameSpecSelectorValueTile.vue'
+import GameSpecSelectorValuePlayer from './GameSpecSelectorValuePlayer.vue'
 
 export default {
   name: 'GameSpecSelectorValue',
@@ -35,7 +36,8 @@ export default {
   components: {
     vSelect,
     GameSpecSelectorValueNumber,
-    GameSpecSelectorValueTile
+    GameSpecSelectorValueTile,
+    GameSpecSelectorValuePlayer
   },
   computed: {
     console: () => console,
@@ -43,6 +45,7 @@ export default {
       switch (this.valueType) {
         case AttributeTypes.NUMBER: return GameSpecSelectorValueNumber
         case AttributeTypes.TILE: return GameSpecSelectorValueTile
+        case AttributeTypes.PLAYER: return GameSpecSelectorValuePlayer
         default: throw new Error('Value type ' + this.valueType + ' does not have an associated selector component')
       }
     }
