@@ -200,6 +200,8 @@ export default new Vuex.Store({
       piece.Owner = owner
 
       state.gamePlay.pieces.push(piece)
+
+      state.gamePlay.grid.tiles[piece.Position.Row][piece.Position.Col].Content = piece
     }
   },
   actions: {
