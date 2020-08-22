@@ -13,6 +13,7 @@
           <component
             :is="component"
             :selector="selector"
+            :specialOptions="specialOptions"
             @change="(newChildSelectorValue) => childSelectorChange(newChildSelectorValue)"
           />
         </template>
@@ -30,6 +31,10 @@ export default {
   props: {
     selector: {
       type: SelectorAttribute,
+      required: false
+    },
+    specialOptions: {
+      type: Array,
       required: false
     }
   },

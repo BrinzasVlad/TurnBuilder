@@ -13,6 +13,7 @@
           <component
             :is="component"
             :selector="selector"
+            :specialOptions="specialOptions"
             @change="(newChildSelectorValue) => childSelectorChange(newChildSelectorValue)" />
         </template>
       </v-select>
@@ -31,6 +32,10 @@ export default {
       type: SelectorValue,
       required: false
       // Will start off undefined until the user selects something
+    },
+    specialOptions: {
+      type: Array,
+      required: false
     }
   },
   components: {

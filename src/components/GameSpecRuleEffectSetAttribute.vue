@@ -3,6 +3,7 @@
         <span class="keep-whitespace">set the value of </span>
         <game-spec-selector-attribute
           :selector="effect.attributeSelector"
+          :specialOptions="specialOptions"
           @change="(newSelector) => attributeSelectorChange(newSelector)"
         />
         <span class="keep-whitespace" v-if="attributeType"> to </span>
@@ -10,6 +11,7 @@
           v-if="attributeType"
           :valueType="attributeType"
           :selector="effect.valueSelector"
+          :specialOptions="specialOptions"
           @change="(newSelector) => valueSelectorChange(newSelector)"
         />
     </div>
@@ -26,6 +28,10 @@ export default {
     effect: {
       type: EffectSetAttribute,
       required: true
+    },
+    specialOptions: {
+      type: Array,
+      required: false
     }
   },
   components: {

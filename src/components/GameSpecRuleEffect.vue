@@ -12,6 +12,7 @@
           <component
             :is="component"
             :effect="effect"
+            :specialOptions="specialOptions"
             @change="(newChildEffectValue) => childEffectChange(newChildEffectValue)"
           />
         </template>
@@ -21,15 +22,20 @@
 
 <script>
 import vSelect from 'vue-select'
+import Effect from '@/utils/Effect'
 import GameSpecRuleEffectSetAttribute from './GameSpecRuleEffectSetAttribute.vue'
 
 export default {
   name: 'GameSpecRuleEffect',
   props: {
     effect: {
-      type: Object,
+      type: Effect,
       required: false
       // It's possible to have a newly-instantiated object that has no associated effect yet
+    },
+    specialOptions: {
+      type: Array,
+      required: false
     }
   },
   components: {

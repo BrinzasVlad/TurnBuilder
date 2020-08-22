@@ -3,6 +3,7 @@
       <component
         :is="component.name"
         :selector="selector"
+        :specialOptions="specialOptions"
         @change="(newChildSelectorValue) => childSelectorChange(newChildSelectorValue)"
       />
     </div>
@@ -24,6 +25,9 @@ export default {
     valueType: {
       validator: (value) => AttributeTypes.allValues.includes(value),
       required: true
+    specialOptions: {
+      type: Array,
+      required: false
     }
   },
   components: {

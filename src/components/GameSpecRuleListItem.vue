@@ -11,6 +11,7 @@
       <span class="keep-whitespace">, </span>
       <game-spec-rule-effect
         :effect="rule.effect"
+        :specialOptions="specialOptions"
         @change="(newEffect) => effectChange(newEffect)"
       />
     </div>
@@ -35,7 +36,8 @@ export default {
   },
   computed: {
     console: () => console,
-    TriggerTypes: () => TriggerTypes
+    TriggerTypes: () => TriggerTypes,
+    specialOptions () { return TriggerTypes.specialOptions(this.rule.trigger) }
   },
   methods: {
     triggerChange (newTrigger) {
