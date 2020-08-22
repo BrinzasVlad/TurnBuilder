@@ -1,7 +1,7 @@
 <template>
     <div class="game-spec-selector-value">
       <component
-        :is="componentName"
+        :is="component.name"
         :selector="selector"
         @change="(newChildSelectorValue) => childSelectorChange(newChildSelectorValue)"
       />
@@ -32,9 +32,9 @@ export default {
   },
   computed: {
     console: () => console,
-    componentName () {
+    component () {
       switch (this.valueType) {
-        case AttributeTypes.NUMBER: return GameSpecSelectorValueNumber.name
+        case AttributeTypes.NUMBER: return GameSpecSelectorValueNumber
         default: throw new Error('Value type ' + this.valueType + ' does not have an associated selector component')
       }
     }

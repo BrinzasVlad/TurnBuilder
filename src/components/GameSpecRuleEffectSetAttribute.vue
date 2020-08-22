@@ -1,11 +1,11 @@
 <template>
     <div class="game-spec-rule-effect-set-attribute  display-row">
-        <span class="keep-whitespace">{{textChunks[0]}}</span>
+        <span class="keep-whitespace">set the value of </span>
         <game-spec-selector-attribute
           :selector="effect.attributeSelector"
           @change="(newSelector) => attributeSelectorChange(newSelector)"
         />
-        <span class="keep-whitespace" v-if="attributeType">{{textChunks[1]}}</span>
+        <span class="keep-whitespace" v-if="attributeType"> to </span>
         <game-spec-selector-value
           v-if="attributeType"
           :valueType="attributeType"
@@ -36,7 +36,6 @@ export default {
     console: () => console,
     text: () => 'set the value of ... to ...',
     effectClass () { return EffectSetAttribute },
-    textChunks: function () { return this.text.split('...') },
     attributeType () {
       if (this.effect.attributeSelector && this.effect.attributeSelector.getAttributeType()) {
         // If an attribute selector has been set and
@@ -47,14 +46,14 @@ export default {
   },
   methods: {
     attributeSelectorChange (newAttributeSelector) {
-      this.effect.attributeSelector = newAttributeSelector // Mutating property of a prop object directly!
-      this.$emit('change', this.effect) // Thus we emit it as an event so the parent is notified
-      // TODO: is this redundant / pointless?
+      this.effect.attributeSelector = newAttributeSelector
+      this.$emit('change', this.effect)
+      // TODO: is mutating the prop directly then emitting an event about it redundant?
     },
     valueSelectorChange (newValueSelector) {
       this.effect.valueSelector = newValueSelector
       this.$emit('change', this.effect)
-      // TODO: same as above, is mutating the prop then emitting an event about it redundant?
+      // TODO: is mutating the prop directly then emitting an event about it redundant?
     }
   }
 }

@@ -25,9 +25,9 @@ export default {
         return this.selector.value
       },
       set (newValue) {
-        this.selector.value = newValue // Mutating property of a prop object directly!
-        this.$emit('change', this.selector) // Thus we emit it as an event so the parent is notified
-        // TODO: is this redundant / pointless?
+        this.selector.value = newValue
+        this.$emit('change', this.selector)
+      // TODO: is mutating the prop directly then emitting an event about it redundant?
       }
     }
   }

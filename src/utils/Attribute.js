@@ -7,15 +7,19 @@ export default class GameAttribute {
   }
 
   set name (value) {
-    if (typeof value !== 'string') throw new Error('not a string') // TODO: are errors thrown correctly?
-    else this._name = value
+    if (typeof value !== 'string') {
+      throw new Error('not a string') // TODO: are errors thrown correctly?
+    }
+    this._name = value
   }
 
   get name () { return this._name }
 
   set type (value) {
-    if (!AttributeTypes.allValues.includes(value)) throw new Error('not an attribute type') // TODO: are errors thrown correctly?
-    else this._type = value
+    if (!AttributeTypes.allValues.includes(value)) {
+      throw new Error('not an attribute type') // TODO: are errors thrown correctly?
+    }
+    this._type = value
   }
 
   get type () { return this._type }

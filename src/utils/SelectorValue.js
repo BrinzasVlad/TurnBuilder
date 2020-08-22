@@ -26,6 +26,7 @@ export default class GameSelectorValue {
    * event, such as, for example, the piece that the user selected.
    */
   getValue (gameState, triggerArgs) {
+    // TODO: should this method return a function, like getAttribute from SelectorAttribute?
     throw new Error('Selector ' + this.constructor.name + ' does not have method getValue() implemented')
   }
 }

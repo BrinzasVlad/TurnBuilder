@@ -36,9 +36,9 @@ export default {
   },
   methods: {
     attributeChanged (newAttribute) {
-      this.selector.gameAttribute = newAttribute // Mutating property of a prop object directly!
-      this.$emit('change', this.selector) // Thus we emit it as an event so the parent is notified
-      // TODO: is this redundant / pointless?
+      this.selector.gameAttribute = newAttribute
+      this.$emit('change', this.selector)
+      // TODO: is mutating the prop directly then emitting an event about it redundant?
     }
   }
 }
