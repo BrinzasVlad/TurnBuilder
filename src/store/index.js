@@ -183,6 +183,23 @@ export default new Vuex.Store({
     setAttributeValue (state, { attributeName, objectFromState, valueToSet }) {
       const objectToSetAttributeFor = objectFromState(state.gamePlay)
       objectToSetAttributeFor[attributeName] = valueToSet
+    },
+    createPiece (state, { pieceName, targetTile, owner }) {
+      const piece = {}
+      const pieceSpecification = state.gameSpec.pieces.find((piece) => piece.name === pieceName)
+
+      piece.icon = pieceSpecification.icon
+      piece.pieceTypeName = pieceSpecification.name
+
+      pieceSpecification.attributes.forEach((attribute) => {
+        // For now, just declare it; in the future, we might put a default value there
+        piece[attribute.name] = undefined
+      })
+
+      piece.Position = targetTile
+      piece.Owner = owner
+
+      state.gamePlay.pieces.push(piece)
     }
   },
   actions: {
@@ -204,10 +221,12 @@ export default new Vuex.Store({
     // Possible actions
     setAttributeValue ({ commit }, { attributeName, objectFromState, valueToSet }) {
       commit('setAttributeValue', { attributeName, objectFromState, valueToSet })
-      // TODO: dispatch any triggers for changing an attribute of something
-      // Also, one might need to determine what exactly was changed (game
+      // One might need to determine what exactly was changed (game
       // attribute, player attribute, piece attribute, etc.) to trigger the
-      // right rules.
+      // right rules once such triggers are added.
+    },
+    createPiece ({ commit }, { pieceName, targetTile, owner }) {
+      commit('createPiece', { pieceName, targetTile, owner })
     }
   },
   getters: {
