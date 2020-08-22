@@ -23,7 +23,8 @@
 <script>
 import vSelect from 'vue-select'
 import SelectorValue from '@/utils/SelectorValue'
-import GameSpecSelectorValuePlayerPick from './GameSpecSelectorValuePlayerPick'
+import GameSpecSelectorValuePlayerPick from './GameSpecSelectorValuePlayerPick.vue'
+import GameSpecSelectorValuePlayerCurrent from './GameSpecSelectorValuePlayerCurrent.vue'
 
 export default {
   name: 'GameSpecSelectorValuePlayer',
@@ -40,13 +41,15 @@ export default {
   },
   components: {
     vSelect,
-    GameSpecSelectorValuePlayerPick
+    GameSpecSelectorValuePlayerPick,
+    GameSpecSelectorValuePlayerCurrent
   },
   computed: {
     console: () => console,
     playerSelectorsList () {
       const playerSelectorsToAdd = [
-        GameSpecSelectorValuePlayerPick
+        GameSpecSelectorValuePlayerPick,
+        GameSpecSelectorValuePlayerCurrent
       ]
       return playerSelectorsToAdd.map((selector) => {
         return {
