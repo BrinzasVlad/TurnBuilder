@@ -6,7 +6,7 @@
         class="selector-attribute-name"
         :clearable="false"
         :options="gameAttributes"
-        :value="selector.attribute"
+        :value="selector.gameAttribute"
         :getOptionLabel="(attribute) => attribute.name"
         @input="(newAttribute) => attributeChanged(newAttribute)"
       />
