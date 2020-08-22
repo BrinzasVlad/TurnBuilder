@@ -1,5 +1,17 @@
 export default class GameSelectorValue {
   /**
+   * Returns the type of value (as per AttributeTypes) that this selector
+   * selects. For instance, if this selector refers to the result of a
+   * multiplication, then the type returned will probably be NUMBER.
+   *
+   * Note that this method might be called before the selector is completely
+   * initialised, such as while the user is still specifying it.
+   */
+  getValueType () {
+    throw new Error('Selector ' + this.constructor.name + ' does not have method getValueType() implemented')
+  }
+
+  /**
    * Returns the value that this selector is selecting.
    *
    * For example, if this is a selector that selects a random tile,
