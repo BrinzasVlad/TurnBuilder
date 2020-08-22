@@ -197,6 +197,9 @@ export default new Vuex.Store({
     gameStart ({ dispatch }) {
       dispatch('trigger', { triggerType: TriggerTypes.GAME_START })
     },
+    tileSelected ({ dispatch }, tile) {
+      dispatch('trigger', { triggerType: TriggerTypes.TILE_SELECTED, triggerArgs: tile })
+    },
 
     // Possible actions
     setAttributeValue ({ commit }, { attributeName, objectFromState, valueToSet }) {

@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     tileClicked (tile) {
-      // TODO
+      this.$store.dispatch('tileSelected', tile)
     },
     pieceClicked (piece) {
       // TODO
