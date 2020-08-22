@@ -11,6 +11,7 @@ export default {
   name: 'GamePlay',
   beforeCreate: function () {
     this.$store.commit('gamePlaySet')
+    this.$store.dispatch('gameStart')
   },
   destroyed: function () {
     this.$store.commit('gamePlayReset')

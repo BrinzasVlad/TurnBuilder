@@ -1,0 +1,38 @@
+<!-- This is a ready-made template for starting a new component -->
+
+<template>
+    <div class="game-play-grid-tile-piece">
+      <img
+        :src="require('../assets/' + piece.icon)"
+        class="piece-image"
+        @mousedown="clicked"
+      />
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'GamePlayGridTilePiece',
+  props: {
+    piece: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    console: () => console
+  },
+  methods: {
+    clicked () {
+      this.$emit('piece-selected', this.piece)
+    }
+  }
+}
+</script>
+
+<style scoped>
+.piece-image {
+  width: 100%;
+  height: 100%;
+}
+</style>
