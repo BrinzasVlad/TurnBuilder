@@ -6,20 +6,20 @@
 </template>
 
 <script>
-import SelectorValueExact from '@/utils/SelectorValueExact'
+import SelectorValueExactNumber from '@/utils/SelectorValueExactNumber'
 
 export default {
   name: 'GameSpecSelectorValueNumberInput',
   props: {
     selector: {
-      type: SelectorValueExact,
+      type: SelectorValueExactNumber,
       required: true
     }
   },
   computed: {
     console: () => console,
     text () { return '(type a value)' },
-    selectorClass () { return SelectorValueExact },
+    selectorClass () { return SelectorValueExactNumber },
     numberValue: {
       get () {
         return this.selector.value
