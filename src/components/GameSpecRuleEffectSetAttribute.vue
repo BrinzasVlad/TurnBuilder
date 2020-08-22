@@ -38,10 +38,10 @@ export default {
     effectClass () { return EffectSetAttribute },
     textChunks: function () { return this.text.split('...') },
     attributeType () {
-      if (this.effect.attributeSelector && this.effect.attributeSelector.getAttribute()) {
+      if (this.effect.attributeSelector && this.effect.attributeSelector.getAttributeType()) {
         // If an attribute selector has been set and
         // it is connected to an actual attribute
-        return this.effect.attributeSelector.getAttribute().type
+        return this.effect.attributeSelector.getAttributeType()
       } else return null
     }
   },
