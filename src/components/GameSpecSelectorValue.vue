@@ -14,6 +14,7 @@ import vSelect from 'vue-select'
 import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from '@/utils/SelectorValue'
 import GameSpecSelectorValueNumber from './GameSpecSelectorValueNumber.vue'
+import GameSpecSelectorValueTile from './GameSpecSelectorValueTile.vue'
 
 export default {
   name: 'GameSpecSelectorValue',
@@ -25,6 +26,7 @@ export default {
     valueType: {
       validator: (value) => AttributeTypes.allValues.includes(value),
       required: true
+    },
     specialOptions: {
       type: Array,
       required: false
@@ -32,13 +34,15 @@ export default {
   },
   components: {
     vSelect,
-    GameSpecSelectorValueNumber
+    GameSpecSelectorValueNumber,
+    GameSpecSelectorValueTile
   },
   computed: {
     console: () => console,
     component () {
       switch (this.valueType) {
         case AttributeTypes.NUMBER: return GameSpecSelectorValueNumber
+        case AttributeTypes.TILE: return GameSpecSelectorValueTile
         default: throw new Error('Value type ' + this.valueType + ' does not have an associated selector component')
       }
     }

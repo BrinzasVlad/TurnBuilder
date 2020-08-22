@@ -24,6 +24,7 @@
 import vSelect from 'vue-select'
 import Effect from '@/utils/Effect'
 import GameSpecRuleEffectSetAttribute from './GameSpecRuleEffectSetAttribute.vue'
+import GameSpecRuleEffectCreatePiece from './GameSpecRuleEffectCreatePiece.vue'
 
 export default {
   name: 'GameSpecRuleEffect',
@@ -40,13 +41,15 @@ export default {
   },
   components: {
     vSelect,
-    GameSpecRuleEffectSetAttribute
+    GameSpecRuleEffectSetAttribute,
+    GameSpecRuleEffectCreatePiece
   },
   computed: {
     console: () => console,
     effectsList: function () {
       const effectsToAdd = [
-        GameSpecRuleEffectSetAttribute
+        GameSpecRuleEffectSetAttribute,
+        GameSpecRuleEffectCreatePiece
       ]
       return effectsToAdd.map(effect => {
         return {
