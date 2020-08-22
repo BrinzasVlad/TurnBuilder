@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Attribute from '@/utils/Attribute.js'
-import AttributeTypes from '../utils/AttributeTypes.js'
-import Rule from '@/utils/Rule.js'
+import Attribute from '@/utils/Attribute'
+import AttributeTypes from '@/utils/AttributeTypes'
+import TriggerTypes from '@/utils/TriggerTypes'
+import Rule from '@/utils/Rule'
 
 Vue.use(Vuex)
 
@@ -177,12 +178,43 @@ export default new Vuex.Store({
         // For now, just declare it; in the future, we might put a default value there
         state.gamePlay.gameAttributes[attribute.name] = undefined
       })
+    },
+    // Game Effect Results
+    setAttributeValue (state, { attributeName, objectFromState, valueToSet }) {
+      const objectToSetAttributeFor = objectFromState(state.gamePlay)
+      objectToSetAttributeFor[attributeName] = valueToSet
     }
   },
   actions: {
-    /* Do we even need actions, though? */
+    // Trigger
+    trigger ({ state, dispatch, getters }, { triggerType, triggerArgs }) {
+      getters.rulesByTrigger(triggerType).forEach((rule) => {
+        rule.effect.execute(state.gamePlay, dispatch, triggerArgs)
+      })
+    },
+
+    // Event reactions
+    gameStart ({ dispatch }) {
+      dispatch('trigger', { triggerType: TriggerTypes.GAME_START })
+    },
+
+    // Possible actions
+    setAttributeValue ({ commit }, { attributeName, objectFromState, valueToSet }) {
+      commit('setAttributeValue', { attributeName, objectFromState, valueToSet })
+      // TODO: dispatch any triggers for changing an attribute of something
+      // Also, one might need to determine what exactly was changed (game
+      // attribute, player attribute, piece attribute, etc.) to trigger the
+      // right rules.
+    }
   },
-  /* TODO: maybe make getters, so that the internal structure of the store can vary without breaking dependents */
+  getters: {
+    /* TODO: maybe make more getters, so the internal structure of the store can vary without breaking dependents */
+    rulesByTrigger (state) {
+      return function (triggerType) {
+        return state.gameSpec.rules.filter((rule) => rule.trigger === triggerType)
+      }
+    }
+  },
   modules: {
   }
 })
