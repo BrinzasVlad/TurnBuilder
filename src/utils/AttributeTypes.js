@@ -1,5 +1,9 @@
 import { addAllValuesProperty } from '@/utils/EnumUtils.js'
 
+/**
+ * An enumeration that contains the possible types of values that
+ * an attribute can take.
+ */
 export default Object.freeze(addAllValuesProperty({
   NUMBER: 'number',
   WORD: 'word',
