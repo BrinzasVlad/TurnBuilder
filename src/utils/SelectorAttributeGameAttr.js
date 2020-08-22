@@ -8,7 +8,17 @@ export default class GameSelectorAttributeGameAttr extends SelectorAttribute {
   set gameAttribute (newGameAttribute) { this._gameAttribute = newGameAttribute }
 
   get gameAttribute () { return this._gameAttribute }
-  getAttribute () {
-    return this._gameAttribute
+
+  getAttributeType () {
+    if (this._gameAttribute) {
+      return this._gameAttribute.type
+    } else return undefined
+  }
+
+  getAttribute (gameState, _triggerArgs) {
+    return {
+      attributeName: this._gameAttribute.name,
+      objectFromState: (gameState) => gameState.gameAttributes
+    }
   }
 }

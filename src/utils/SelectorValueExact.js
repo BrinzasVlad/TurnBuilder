@@ -12,7 +12,7 @@ export default class GameSelectorValueExact extends SelectorValue {
 
   get value () { return this._value }
 
-  getValue () {
+  getValue (_gameState, _triggerArgs) {
     return this._value
   }
 }
