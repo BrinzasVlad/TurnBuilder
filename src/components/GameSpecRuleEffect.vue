@@ -1,5 +1,6 @@
 <template>
-    <div class="game-spec-rule-effect">
+    <div class="game-spec-rule-effect" @mousedown.stop>
+    <!-- Mousedown.stop needed to prevent the parent v-select from reacting before us -->
       <v-select
         class="rule-effect"
         :clearable="false"
@@ -25,6 +26,7 @@ import vSelect from 'vue-select'
 import Effect from '@/js-classes/Effect'
 import GameSpecRuleEffectSetAttribute from './GameSpecRuleEffectSetAttribute.vue'
 import GameSpecRuleEffectCreatePiece from './GameSpecRuleEffectCreatePiece.vue'
+import GameSpecRuleEffectIfThen from './GameSpecRuleEffectIfThen.vue'
 
 export default {
   name: 'GameSpecRuleEffect',
@@ -42,14 +44,16 @@ export default {
   components: {
     vSelect,
     GameSpecRuleEffectSetAttribute,
-    GameSpecRuleEffectCreatePiece
+    GameSpecRuleEffectCreatePiece,
+    GameSpecRuleEffectIfThen
   },
   computed: {
     console: () => console,
     effectsList: function () {
       const effectsToAdd = [
         GameSpecRuleEffectSetAttribute,
-        GameSpecRuleEffectCreatePiece
+        GameSpecRuleEffectCreatePiece,
+        GameSpecRuleEffectIfThen
       ]
       return effectsToAdd.map(effect => {
         return {
