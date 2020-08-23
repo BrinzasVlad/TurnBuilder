@@ -1,4 +1,4 @@
-import AttributeTypes from '@/utils/AttributeTypes.js'
+import AttributeTypes from '@/utils/AttributeTypes'
 export default class GameAttribute {
   constructor (name, type, editable = true) {
     this._name = name

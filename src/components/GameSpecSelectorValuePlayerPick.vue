@@ -13,7 +13,7 @@
 
 <script>
 import vSelect from 'vue-select'
-import SelectorValueExactPlayer from '@/utils/SelectorValueExactPlayer'
+import SelectorValueExactPlayer from '@/js-classes/SelectorValueExactPlayer'
 
 export default {
   name: 'GameSpecSelectorValuePlayerPick',

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import EffectCreatePiece from '@/utils/EffectCreatePiece'
+import EffectCreatePiece from '@/js-classes/EffectCreatePiece'
 import GameSpecPickerPiece from './GameSpecPickerPiece.vue'
 import GameSpecSelectorValueTile from './GameSpecSelectorValueTile.vue'
 import GameSpecSelectorValuePlayer from './GameSpecSelectorValuePlayer.vue'

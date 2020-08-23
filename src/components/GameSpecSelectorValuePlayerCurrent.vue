@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SelectorValuePlayerCurrent from '@/utils/SelectorValuePlayerCurrent'
+import SelectorValuePlayerCurrent from '@/js-classes/SelectorValuePlayerCurrent'
 
 export default {
   name: 'GameSpecSelectorValuePlayerCurrent',

@@ -23,7 +23,7 @@
 
 <script>
 import vSelect from 'vue-select'
-import SelectorAttribute from '@/utils/SelectorAttribute'
+import SelectorAttribute from '@/js-classes/SelectorAttribute'
 import GameSpecSelectorAttributeGameAttr from './GameSpecSelectorAttributeGameAttr.vue'
 
 export default {

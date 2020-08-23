@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import EffectSetAttribute from '@/utils/EffectSetAttribute'
+import EffectSetAttribute from '@/js-classes/EffectSetAttribute'
 import GameSpecSelectorAttribute from './GameSpecSelectorAttribute.vue'
 import GameSpecSelectorValue from './GameSpecSelectorValue.vue'
 

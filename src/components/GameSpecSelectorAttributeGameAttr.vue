@@ -15,7 +15,7 @@
 
 <script>
 import vSelect from 'vue-select'
-import SelectorAttributeGameAttr from '@/utils/SelectorAttributeGameAttr'
+import SelectorAttributeGameAttr from '@/js-classes/SelectorAttributeGameAttr'
 
 export default {
   name: 'GameSpecSelectorAttributeGameAttr',

@@ -1,5 +1,3 @@
-<!-- This is a ready-made template for starting a new component -->
-
 <template>
     <div class="game-play-grid-tile-piece">
       <img

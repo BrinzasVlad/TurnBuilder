@@ -12,7 +12,7 @@
 <script>
 import vSelect from 'vue-select'
 import AttributeTypes from '@/utils/AttributeTypes'
-import SelectorValue from '@/utils/SelectorValue'
+import SelectorValue from '@/js-classes/SelectorValue'
 import GameSpecSelectorValueNumber from './GameSpecSelectorValueNumber.vue'
 import GameSpecSelectorValueTile from './GameSpecSelectorValueTile.vue'
 import GameSpecSelectorValuePlayer from './GameSpecSelectorValuePlayer.vue'

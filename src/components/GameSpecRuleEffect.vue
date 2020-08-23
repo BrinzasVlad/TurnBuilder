@@ -22,7 +22,7 @@
 
 <script>
 import vSelect from 'vue-select'
-import Effect from '@/utils/Effect'
+import Effect from '@/js-classes/Effect'
 import GameSpecRuleEffectSetAttribute from './GameSpecRuleEffectSetAttribute.vue'
 import GameSpecRuleEffectCreatePiece from './GameSpecRuleEffectCreatePiece.vue'
 

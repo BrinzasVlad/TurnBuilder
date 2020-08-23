@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Attribute from '@/utils/Attribute'
 import AttributeTypes from '@/utils/AttributeTypes'
 import TriggerTypes from '@/utils/TriggerTypes'
-import Rule from '@/utils/Rule'
+import Attribute from '@/js-classes/Attribute'
+import Rule from '@/js-classes/Rule'
 
 Vue.use(Vuex)
 

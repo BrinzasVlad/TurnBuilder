@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import SelectorValueExactNumber from '@/utils/SelectorValueExactNumber'
+import SelectorValueExactNumber from '@/js-classes/SelectorValueExactNumber'
 
 export default {
   name: 'GameSpecSelectorValueNumberInput',

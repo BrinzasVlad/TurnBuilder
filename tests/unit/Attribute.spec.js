@@ -1,4 +1,4 @@
-import Attribute from '@/utils/Attribute.js'
+import Attribute from '@/js-classes/Attribute.js'
 import AttributeTypes from '@/utils/AttributeTypes.js'
 
 describe('Attribute.js', () => {

@@ -22,8 +22,8 @@
 
 <script>
 import vSelect from 'vue-select'
+import SelectorValue from '@/js-classes/SelectorValue'
 import GameSpecSelectorValueNumberInput from './GameSpecSelectorValueNumberInput.vue'
-import SelectorValue from '@/utils/SelectorValue'
 
 export default {
   name: 'GameSpecSelectorValueNumber',

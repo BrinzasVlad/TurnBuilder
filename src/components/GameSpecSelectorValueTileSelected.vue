@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SelectorValueSelectedTile from '@/utils/SelectorValueSelectedTile'
+import SelectorValueSelectedTile from '@/js-classes/SelectorValueSelectedTile'
 
 export default {
   name: 'GameSpecSelectorValueTileSelected',

@@ -23,7 +23,7 @@
 <script>
 import vSelect from 'vue-select'
 import SpecialOptions from '@/utils/SpecialOptions'
-import SelectorValue from '@/utils/SelectorValue'
+import SelectorValue from '@/js-classes/SelectorValue'
 import GameSpecSelectorValueTileSelected from './GameSpecSelectorValueTileSelected.vue'
 
 export default {

@@ -1,5 +1,5 @@
+import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from './SelectorValue'
-import AttributeTypes from './AttributeTypes'
 
 export default class GameSelectorValueExactPlayer extends SelectorValue {
   constructor (playerNumber) {

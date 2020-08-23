@@ -22,7 +22,7 @@
 
 <script>
 import vSelect from 'vue-select'
-import SelectorValue from '@/utils/SelectorValue'
+import SelectorValue from '@/js-classes/SelectorValue'
 import GameSpecSelectorValuePlayerPick from './GameSpecSelectorValuePlayerPick.vue'
 import GameSpecSelectorValuePlayerCurrent from './GameSpecSelectorValuePlayerCurrent.vue'
 
