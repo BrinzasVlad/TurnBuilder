@@ -6,11 +6,16 @@
       <router-link to="/specify">Game Specification</router-link> |
       <router-link to="/playtest">Game Playtesting</router-link>
     </div>
-    <router-view />
+    <router-view id="page" />
   </div>
 </template>
 
 <style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -20,7 +25,9 @@
 }
 
 #nav {
-  padding: 30px;
+  box-sizing: border-box;
+  padding: 20px;
+  height: 15vh;
 }
 
 #nav a {
@@ -30,6 +37,11 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+#page {
+  height: 85vh;
+  overflow: auto;
 }
 
 /** Preserves whitespace as written, wraps text normally */
