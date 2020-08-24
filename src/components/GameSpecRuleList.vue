@@ -36,7 +36,7 @@ export default {
       // Currently, this will update the count whenever the list of rules changes.
       // While this does fix the problem of providing unique keys for all the
       // elements in the v-for, it does so at the cost of essentially re-rendering
-      // the v-for every time 
+      // the v-for every time
       return this.$store.state.gameSpec.rules.map((rule) => {
         return { key: keyCounter++, rule: rule }
       })
