@@ -41,7 +41,5 @@ export default {
   border: 2px solid black;
   border-radius: 15%;
   background-color: lightcyan;
-  min-height: 20px; /* TEMP */
-  min-width: 20px; /* TEMP */
 }
 </style>
