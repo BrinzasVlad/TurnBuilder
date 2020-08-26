@@ -32,9 +32,9 @@ describe('GameSpecAttributeListItem', () => {
     const wrapper = factory('TestAttribute', AttributeTypes.NUMBER)
 
     const attributeSelect = wrapper.find('.attribute-type')
-    attributeSelect.vm.select(AttributeTypes.WORD)
+    attributeSelect.vm.select(AttributeTypes.TEXT)
 
     expect(wrapper.emitted('attribute-type-change')).toBeTruthy()
-    expect(wrapper.emitted('attribute-type-change')[0]).toEqual([AttributeTypes.WORD])
+    expect(wrapper.emitted('attribute-type-change')[0]).toEqual([AttributeTypes.TEXT])
   })
 })

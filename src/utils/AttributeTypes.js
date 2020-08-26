@@ -6,7 +6,7 @@ import { addAllValuesProperty } from '@/utils/EnumUtils.js'
  */
 export default Object.freeze(addAllValuesProperty({
   NUMBER: 'number',
-  WORD: 'word',
+  TEXT: 'text',
   PLAYER: 'player',
   TILE: 'tile',
   PIECE: 'piece',
@@ -18,7 +18,7 @@ export default Object.freeze(addAllValuesProperty({
   toVuePropType: function (enumValue) {
     switch (enumValue) {
       case this.NUMBER: return Number
-      case this.WORD: return String
+      case this.TEXT: return String
       case this.PLAYER: return Object // TODO: use actual classes - Vue accepts them
       case this.TILE: return Object
       case this.PIECE: return Object
@@ -27,7 +27,7 @@ export default Object.freeze(addAllValuesProperty({
   /**
    * Returns the AttributeTypes value matching the given Javascript
    * entity. For instance, a number yields AttributeTypes.NUMBER and
-   * a string yields AttributeTypes.WORD.
+   * a string yields AttributeTypes.TEXT.
    * For entities that do not match any value of AttributeTypes,
    * this function returns null.
    * @param {any} entity The Javascript entity to be assessed
@@ -35,7 +35,7 @@ export default Object.freeze(addAllValuesProperty({
   fromJavascriptEntity: function (entity) {
     switch (typeof entity) {
       case 'number': return this.NUMBER
-      case 'string': return this.WORD
+      case 'string': return this.TEXT
       case 'object':
         // TODO: check whether it is a player, piece or tile via instanceof
     }
