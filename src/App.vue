@@ -53,5 +53,29 @@ body {
 .display-row {
   display: flex;
   flex-direction: row;
+
+  vertical-align: middle;
+  align-items: center;
+}
+
+/* TODO: make v-select width actually look like something; maybe used fixed-min-width v-selects? */
+.v-select .vs__selected {
+  margin: 1px 2px;
+}
+
+.v-select .vs__dropdown-toggle {
+  padding: 0;
+}
+
+.v-select .vs__search {
+  margin: 0;
+}
+
+.v-select .vs__search:focus {
+  margin: 0;
+}
+
+.v-select .vs__actions {
+  padding: 0 6px 0 3px;
 }
 </style>

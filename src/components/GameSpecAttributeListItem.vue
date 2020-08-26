@@ -1,5 +1,5 @@
 <template>
-  <div id="game-spec-attribute-list-item">
+  <div class="game-spec-attribute-list-item  display-row">
     <span class="keep-whitespace">Attribute </span>
     <input
       type="text"
@@ -63,10 +63,6 @@ export default {
 </script>
 
 <style scoped>
-#game-spec-attribute-list-item {
-    display: flex;
-    flex-direction: row;
-}
 .remove-button {
   color: red;
 }
