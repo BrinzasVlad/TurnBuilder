@@ -31,5 +31,9 @@ export default {
 </script>
 
 <style scoped>
-
+.game-spec {
+  width: max-content;
+  min-width: 100%;
+  padding: 0 5rem 5rem 0;
+}
 </style>
