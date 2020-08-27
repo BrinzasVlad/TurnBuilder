@@ -9,6 +9,7 @@
           <game-spec-piece-list-item
             :piece="piece"
             @piece-name-change="(newName) => renamePiece(index, newName)"
+            @piece-icon-change="(newIcon) => changePieceIcon(index, newIcon)"
             @remove="removePiece(index)"
           />
         </li>
@@ -37,6 +38,9 @@ export default {
     },
     renamePiece (index, newName) {
       this.$store.commit('alterPieceName', { pieceName: this.pieces[index].name, newName: newName })
+    },
+    changePieceIcon (index, newIcon) {
+      this.$store.commit('alterPieceIcon', { pieceName: this.pieces[index].name, newIcon: newIcon })
     },
     removePiece (index) {
       this.$store.commit('removePiece', this.pieces[index].name)

@@ -1,9 +1,17 @@
-<!-- TODO: should display one piece and allow editing it and altering its attributes -->
-
 <template>
     <div class="game-spec-piece-list-item">
       <div class="piece-presentation  display-row">
-        <img :src="require('@/assets/icons/' + piece.icon)" />
+        <v-select
+          :clearable="false"
+          :options="pieceList"
+          :value="currentPiece"
+          @input="(newOption) => iconChange(newOption.name)"
+          label="name"
+        >
+          <template :slot="slotName" v-for="slotName in ['option', 'selected-option']" slot-scope="{ img }">
+            <img :src="img" :key="slotName">
+          </template>
+        </v-select>
         <input
           type="text"
           placeholder="Piece name"
@@ -29,25 +37,35 @@
 </template>
 
 <script>
+import vSelect from 'vue-select'
+import imageArray from '@/assets/icons/index.js'
 import GameSpecAttributeList from './GameSpecAttributeList.vue'
 
 export default {
   name: 'GameSpecPieceListItem',
-  components: {
-    GameSpecAttributeList
-  },
-  computed: {
-    console: () => console
-  },
   props: {
     piece: {
       type: Object,
       required: true
     }
   },
+  components: {
+    vSelect,
+    GameSpecAttributeList
+  },
+  computed: {
+    console: () => console,
+    pieceList: () => imageArray,
+    currentPiece () {
+      return imageArray.find((image) => (image.name + '.png') === this.piece.icon)
+    }
+  },
   methods: {
     nameChange (newName) {
       this.$emit('piece-name-change', newName)
+    },
+    iconChange (newIconName) {
+      this.$emit('piece-icon-change', newIconName + '.png')
     },
     renamePieceAttribute (index, newName) {
       const attribute = this.piece.attributes[index]
