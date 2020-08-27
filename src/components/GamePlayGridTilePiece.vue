@@ -1,7 +1,7 @@
 <template>
     <div class="game-play-grid-tile-piece">
       <img
-        :src="require('../assets/' + piece.icon)"
+        :src="require('../assets/icons/' + piece.icon)"
         class="piece-image"
         @mousedown="clicked"
       />

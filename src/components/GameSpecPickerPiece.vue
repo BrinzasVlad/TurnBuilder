@@ -11,13 +11,13 @@
       >
         <template #option="{ icon, name }">
             <div class="display-row">
-              <img :src="require('../assets/' + icon)">
+              <img :src="require('../assets/icons/' + icon)">
               <span class="keep-whitespace-nowrap"> {{name}}</span>
             </div>
         </template>
         <template #selected-option="{ icon, name }">
             <div class="display-row">
-              <img :src="require('../assets/' + icon)">
+              <img :src="require('../assets/icons/' + icon)">
               <span class="keep-whitespace-nowrap"> {{name}}</span>
             </div>
         </template>

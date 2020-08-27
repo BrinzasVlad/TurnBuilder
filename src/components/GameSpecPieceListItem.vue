@@ -3,7 +3,7 @@
 <template>
     <div class="game-spec-piece-list-item">
       <div class="piece-presentation  display-row">
-        <img :src="require('@/assets/' + piece.icon)" />
+        <img :src="require('@/assets/icons/' + piece.icon)" />
         <input
           type="text"
           placeholder="Piece name"
