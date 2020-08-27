@@ -1,7 +1,7 @@
 <template>
     <div class="game-spec-selector-value-number-input" @mousedown.stop>
     <!-- Mousedown.stop needed to prevent the parent v-select from reacting before us -->
-      <input type="number" v-model.number="numberValue" />
+      <input type="number" v-model.number.lazy="numberValue" />
     </div>
 </template>
 
