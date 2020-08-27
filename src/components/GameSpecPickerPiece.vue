@@ -9,14 +9,8 @@
         :getOptionLabel="(option) => option.name"
         @input="(newPiece) => pieceChanged(newPiece)"
       >
-        <template #option="{ icon, name }">
-            <div class="display-row">
-              <img :src="require('../assets/icons/' + icon)">
-              <span class="keep-whitespace-nowrap"> {{name}}</span>
-            </div>
-        </template>
-        <template #selected-option="{ icon, name }">
-            <div class="display-row">
+        <template :slot="slotName" v-for="slotName in ['option', 'selected-option']" slot-scope="{ icon, name }">
+            <div class="display-row" :key="slotName">
               <img :src="require('../assets/icons/' + icon)">
               <span class="keep-whitespace-nowrap"> {{name}}</span>
             </div>
