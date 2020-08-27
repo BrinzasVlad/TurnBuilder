@@ -149,36 +149,36 @@ export default new Vuex.Store({
         const player = {}
         state.gameSpec.players.attributes.forEach((attribute) => {
           // For now, just declare it; in the future, we might put a default value there
-          player[attribute.name] = undefined
+          Vue.set(player, attribute.name, undefined)
         })
 
-        player.playerNumber = playerNumber + 1
+        Vue.set(player, 'playerNumber', playerNumber + 1)
 
-        state.gamePlay.players[playerNumber] = player
+        state.gamePlay.players.push(player)
       }
 
       // Tiles
       for (let row = 0; row < state.gameSpec.grid.height; row++) {
-        state.gamePlay.grid.tiles[row] = []
+        state.gamePlay.grid.tiles.push([])
         for (let col = 0; col < state.gameSpec.grid.width; col++) {
           const tile = {}
           state.gameSpec.grid.attributes.forEach((attribute) => {
             // For now, just declare it; in the future, we might put a default value there
-            tile[attribute.name] = undefined
+            Vue.set(tile, attribute.name, undefined)
           })
 
-          tile.Row = row
-          tile.Col = col
-          tile.Content = null
+          Vue.set(tile, 'Row', row)
+          Vue.set(tile, 'Col', col)
+          Vue.set(tile, 'Content', null)
 
-          state.gamePlay.grid.tiles[row][col] = tile
+          state.gamePlay.grid.tiles[row].push(tile)
         }
       }
 
       // Game Attributes
       state.gameSpec.gameAttributes.forEach((attribute) => {
         // For now, just declare it; in the future, we might put a default value there
-        state.gamePlay.gameAttributes[attribute.name] = undefined
+        Vue.set(state.gamePlay.gameAttributes, attribute.name, undefined)
       })
     },
     // Game Effect Results
@@ -190,16 +190,16 @@ export default new Vuex.Store({
       const piece = {}
       const pieceSpecification = state.gameSpec.pieces.find((piece) => piece.name === pieceName)
 
-      piece.icon = pieceSpecification.icon
-      piece.pieceTypeName = pieceSpecification.name
+      Vue.set(piece, 'icon', pieceSpecification.icon)
+      Vue.set(piece, 'pieceTypeName', pieceSpecification.name)
 
       pieceSpecification.attributes.forEach((attribute) => {
         // For now, just declare it; in the future, we might put a default value there
-        piece[attribute.name] = undefined
+        Vue.set(piece, attribute.name, undefined)
       })
 
-      piece.Position = targetTile
-      piece.Owner = owner
+      Vue.set(piece, 'Position', targetTile)
+      Vue.set(piece, 'Owner', owner)
 
       state.gamePlay.pieces.push(piece)
 
