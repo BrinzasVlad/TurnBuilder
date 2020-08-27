@@ -30,7 +30,7 @@ export default {
       this.$emit('tile-clicked', this.tile)
     },
     pieceClicked (piece) {
-      this.$emit('piece-clicked', this.piece)
+      this.$emit('piece-clicked', piece)
     }
   }
 }

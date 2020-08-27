@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     clicked () {
-      this.$emit('piece-selected', this.piece)
+      this.$emit('piece-clicked', this.piece)
     }
   }
 }
