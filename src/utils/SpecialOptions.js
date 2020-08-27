@@ -9,5 +9,6 @@ import { addAllValuesProperty } from '@/utils/EnumUtils.js'
  * first place)
  */
 export default Object.freeze(addAllValuesProperty({
-  TILE_SELECTED: 'tile selected'
+  TILE_SELECTED: 'tile selected',
+  PIECE_SELECTED: 'piece selected'
 }))

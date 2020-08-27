@@ -8,6 +8,7 @@ import SpecialOptions from '@/utils/SpecialOptions.js'
 export default Object.freeze(addAllValuesProperty({
   GAME_START: 'the game starts',
   TILE_SELECTED: 'the current player selects a tile',
+  PIECE_SELECTED: 'the current player selects a piece',
   /**
    * Return the special options associated to the given trigger
    * (as an array), as per SpecialOptions
@@ -17,6 +18,7 @@ export default Object.freeze(addAllValuesProperty({
   specialOptions (triggerType) {
     switch (triggerType) {
       case this.TILE_SELECTED: return [SpecialOptions.TILE_SELECTED]
+      case this.PIECE_SELECTED: return [SpecialOptions.PIECE_SELECTED]
       default: return []
     }
   }

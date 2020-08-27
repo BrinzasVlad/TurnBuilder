@@ -87,7 +87,7 @@ export default {
       this.$store.dispatch('tileSelected', tile)
     },
     pieceClicked (piece) {
-      // TODO
+      this.$store.dispatch('pieceSelected', piece)
     },
     updateParentDimensions () {
       const { width, height } = this.$el.getBoundingClientRect()
