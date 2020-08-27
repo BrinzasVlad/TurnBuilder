@@ -131,6 +131,10 @@ export default new Vuex.Store({
       // TODO: it might be better to identify rules by some unique id than by their index
       state.gameSpec.rules[index][propertyName] = newValue
     },
+    removeRule (state, ruleIndex) {
+      // TODO: it might be better to identify rules by some unique id than by their index
+      state.gameSpec.rules.splice(ruleIndex, 1)
+    },
     /// GAME PLAY MUTATIONS
     // Set / Reset
     gamePlayReset (state) {

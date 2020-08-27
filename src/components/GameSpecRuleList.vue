@@ -5,12 +5,14 @@
         <li
           v-for="(ruleWithKey, index) in rulesWithKeys"
           :key="ruleWithKey.key"
+          class="display-row"
         >
           <game-spec-rule-list-item
             :rule="ruleWithKey.rule"
             @rule-trigger-change="(newTrigger) => ruleTriggerChange(index, newTrigger)"
             @rule-effect-change="(newEffect) => ruleEffectChange(index, newEffect)"
           />
+          <button class="remove-button" @click="removeRule(index)">Remove</button>
         </li>
         <li class="add-rule-entry">
           <button @click="addRule">Add new rule...</button>
@@ -51,6 +53,9 @@ export default {
     },
     ruleEffectChange (index, newEffect) {
       this.$store.commit('alterRule', { index, propertyName: 'effect', newValue: newEffect })
+    },
+    removeRule (index) {
+      this.$store.commit('removeRule', index)
     }
   }
 }
@@ -62,5 +67,8 @@ h2 {
 }
 .add-rule-entry {
   text-align: left;
+}
+.remove-button {
+  color: red;
 }
 </style>
