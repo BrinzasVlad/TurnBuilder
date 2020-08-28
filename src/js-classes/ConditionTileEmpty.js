@@ -1,6 +1,6 @@
 import Condition from './Condition'
 
-export default class GameConditionTileEmpt extends Condition {
+export default class ConditionTileEmpt extends Condition {
   constructor (tileSelector) {
     super()
     this._tileSelector = tileSelector

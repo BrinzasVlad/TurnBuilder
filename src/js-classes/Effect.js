@@ -1,4 +1,4 @@
-export default class GameEffect {
+export default class Effect {
   // TODO: maybe this should be a regular comment, rather than a JSDoc, since it addresses development, not usage?
   /**
    * Executes this effect, potentially dispatching a number of changes to the game state.

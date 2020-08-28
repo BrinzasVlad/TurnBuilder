@@ -1,7 +1,7 @@
 import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from './SelectorValue'
 
-export default class GameSelectorValueExactText extends SelectorValue {
+export default class SelectorValueExactText extends SelectorValue {
   constructor (initialValue) {
     super()
     this._value = initialValue

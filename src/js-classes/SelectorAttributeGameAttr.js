@@ -1,5 +1,5 @@
 import SelectorAttribute from './SelectorAttribute'
-export default class GameSelectorAttributeGameAttr extends SelectorAttribute {
+export default class SelectorAttributeGameAttr extends SelectorAttribute {
   constructor (gameAttribute) {
     super()
     this._gameAttribute = gameAttribute

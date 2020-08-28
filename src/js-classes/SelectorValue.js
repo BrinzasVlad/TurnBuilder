@@ -1,4 +1,4 @@
-export default class GameSelectorValue {
+export default class SelectorValue {
   /**
    * Returns the type of value (as per AttributeTypes) that this selector
    * selects. For instance, if this selector refers to the result of a

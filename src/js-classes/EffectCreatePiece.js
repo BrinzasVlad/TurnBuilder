@@ -1,6 +1,6 @@
 import Effect from './Effect'
 
-export default class GameEffectCreatePiece extends Effect {
+export default class EffectCreatePiece extends Effect {
   constructor (piece, tileSelector, ownerSelector) {
     super()
     this._piece = piece

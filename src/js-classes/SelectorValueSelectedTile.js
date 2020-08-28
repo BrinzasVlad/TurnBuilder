@@ -1,7 +1,7 @@
 import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from './SelectorValue'
 
-export default class GameSelectorValueSelectedTile extends SelectorValue {
+export default class SelectorValueSelectedTile extends SelectorValue {
   getType () {
     return AttributeTypes.TILE
   }

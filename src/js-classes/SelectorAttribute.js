@@ -1,4 +1,4 @@
-export default class GameSelectorAttribute {
+export default class SelectorAttribute {
   /**
    * Returns the type of attribute (as per AttributeTypes) that this selector
    * points to. For instance, if this selector refers to the 'Owner' of a

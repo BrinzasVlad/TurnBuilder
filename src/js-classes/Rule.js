@@ -1,6 +1,6 @@
 import TriggerTypes from '@/utils/TriggerTypes'
 
-export default class GameRule {
+export default class Rule {
   constructor (trigger, effect) {
     this._trigger = trigger
     this._effect = effect

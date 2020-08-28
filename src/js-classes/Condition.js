@@ -1,4 +1,4 @@
-export default class GameCondition {
+export default class Condition {
   /**
    * Assesses whether the condition represented by this object is true, given the current game
    * state and the parameters of the triggering event. Returns a boolean value (true if the

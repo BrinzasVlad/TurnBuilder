@@ -1,6 +1,6 @@
 import Effect from './Effect'
 
-export default class GameEffectSetAttribute extends Effect {
+export default class EffectSetAttribute extends Effect {
   constructor (attributeSelector, valueSelector) {
     super()
     this._attributeSelector = attributeSelector

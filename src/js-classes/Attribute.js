@@ -1,5 +1,5 @@
 import AttributeTypes from '@/utils/AttributeTypes'
-export default class GameAttribute {
+export default class Attribute {
   constructor (name, type, editable = true) {
     this._name = name
     this._type = type

@@ -1,7 +1,7 @@
 import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from './SelectorValue'
 
-export default class GameSelectorValuePlayerCurrent extends SelectorValue {
+export default class SelectorValuePlayerCurrent extends SelectorValue {
   getType () {
     return AttributeTypes.PLAYER
   }

@@ -1,6 +1,6 @@
 import Effect from './Effect'
 
-export default class GameEffectIfThen extends Effect {
+export default class EffectIfThen extends Effect {
   constructor (condition, effect) {
     super()
     this._condition = condition
