@@ -37,6 +37,7 @@ export default new Vuex.Store({
       grid: {
         tiles: []
       },
+      nextPieceId: 0,
       pieces: [],
       gameAttributes: {}
     }
@@ -138,11 +139,13 @@ export default new Vuex.Store({
     /// GAME PLAY MUTATIONS
     // Set / Reset
     gamePlayReset (state) {
+      // TODO: this 'initial state' should be extracted into a constant or else gamePlayReset should be called at start
       state.gamePlay = {
         players: [],
         grid: {
           tiles: []
         },
+        nextPieceId: 0,
         pieces: [],
         gameAttributes: {}
       }
@@ -155,7 +158,6 @@ export default new Vuex.Store({
           // For now, just declare it; in the future, we might put a default value there
           Vue.set(player, attribute.name, undefined)
         })
-
         Vue.set(player, 'playerNumber', playerNumber + 1)
 
         state.gamePlay.players.push(player)
@@ -170,7 +172,6 @@ export default new Vuex.Store({
             // For now, just declare it; in the future, we might put a default value there
             Vue.set(tile, attribute.name, undefined)
           })
-
           Vue.set(tile, 'Row', row)
           Vue.set(tile, 'Col', col)
           Vue.set(tile, 'Content', null)
@@ -194,6 +195,7 @@ export default new Vuex.Store({
       const piece = {}
       const pieceSpecification = state.gameSpec.pieces.find((piece) => piece.name === pieceName)
 
+      Vue.set(piece, 'id', state.gamePlay.nextPieceId++) // Give each piece a unique id
       Vue.set(piece, 'icon', pieceSpecification.icon)
       Vue.set(piece, 'pieceTypeName', pieceSpecification.name)
 
