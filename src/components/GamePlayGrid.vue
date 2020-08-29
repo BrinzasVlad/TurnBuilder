@@ -17,17 +17,6 @@
           @piece-clicked="(piece) => pieceClicked(piece)"
         />
       </div>
-      <!-- Normally, using the index as key is frowned upon.
-           However, in this scenario, I believe it is appropriate,
-           since tiles are fixed and are indeed uniquely identified
-           by their row and column coordinates. -->
-      <!-- <div v-for="(tileRow, indexRow) in tiles" :key="indexRow" class="display-row">
-        <div v-for="(tile, indexCol) in tileRow" :key="indexCol"> -->
-          <!-- <game-play-grid-tile
-            :tile="tile"
-            @tile-clicked="(tile) => tileClicked(tile)"
-            @piece-clicked="(piece) => pieceClicked(piece)"
-          /> -->
     </div>
 </template>
 
