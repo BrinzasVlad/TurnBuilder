@@ -19,10 +19,11 @@ export default class SelectorAttribute {
    * * `objectFromState` - A function that extracts the object bearing the
    * attribute pointed by this selector (for instance, if this selector refers
    * to the attribute 'Owner' of a certain piece, the objectFromState will,
-   * when passed the game state, return the given piece)
+   * when passed the game state, return the given piece) from the game state
+   * and the trigger arguments
    *
-   * Accessing attributeBearingObject[attributeName] should allow one to
-   * access the value of the attribute.
+   * Accessing objectFromState(gameState, triggerArgs)[attributeName] should
+   * allow one to alter the attribute
    *
    * @param {*} gameState The complete game state at the moment when the selector was
    * queried, including data about players, tiles, pieces and game attributes. The state is

@@ -15,10 +15,10 @@ export default class SelectorAttributeGameAttr extends SelectorAttribute {
     } else return undefined
   }
 
-  getAttribute (gameState, _triggerArgs) {
+  getAttribute (_gameState, _triggerArgs) {
     return {
       attributeName: this._gameAttribute.name,
-      objectFromState: (gameState) => gameState.gameAttributes
+      objectFromState: (gameState, _triggerArgs) => gameState.gameAttributes
     }
   }
 }
