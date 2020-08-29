@@ -1,5 +1,5 @@
 <template>
-    <div class="game-spec-rule-effect-if-then  display-row">
+    <div class="game-spec-effect-if-then  display-row">
       <span class="keep-whitespace">if </span>
       <game-spec-condition
         :condition="effect.condition"
@@ -7,7 +7,7 @@
         @change="(newCondition) => conditionChange(newCondition)"
       />
       <span class="keep-whitespace"> then </span>
-      <game-spec-rule-effect
+      <game-spec-effect
         :effect="effect.effect"
         :specialOptions="specialOptions"
         @change="(newEffect) => effectChange(newEffect)"
@@ -18,10 +18,10 @@
 <script>
 import EffectIfThen from '@/js-classes/EffectIfThen'
 import GameSpecCondition from './GameSpecCondition.vue'
-import GameSpecRuleEffect from './GameSpecRuleEffect.vue'
+import GameSpecEffect from './GameSpecEffect.vue'
 
 export default {
-  name: 'GameSpecRuleEffectIfThen',
+  name: 'GameSpecEffectIfThen',
   props: {
     effect: {
       type: EffectIfThen,
@@ -36,7 +36,7 @@ export default {
     GameSpecCondition
   },
   beforeCreate: function () {
-    this.$options.components.GameSpecRuleEffect = GameSpecRuleEffect
+    this.$options.components.GameSpecEffect = GameSpecEffect
     // We need to import this later because else we run into a circular
     // dependency problem: the Effect Vue declares this one as a component
     // and this one declares the Effect Vue as a component

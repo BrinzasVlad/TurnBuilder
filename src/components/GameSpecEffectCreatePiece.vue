@@ -1,5 +1,5 @@
 <template>
-    <div class="game-spec-rule-effect-create-piece  display-row">
+    <div class="game-spec-effect-create-piece  display-row">
       <span class="keep-whitespace">create a piece of type </span>
       <game-spec-picker-piece
         :piece="effect.piece"
@@ -27,7 +27,7 @@ import GameSpecSelectorValueTile from './GameSpecSelectorValueTile.vue'
 import GameSpecSelectorValuePlayer from './GameSpecSelectorValuePlayer.vue'
 
 export default {
-  name: 'GameSpecRuleEffectCreatePiece',
+  name: 'GameSpecEffectCreatePiece',
   props: {
     effect: {
       type: EffectCreatePiece,

@@ -1,5 +1,5 @@
 <template>
-    <div class="game-spec-rule-effect-set-attribute  display-row">
+    <div class="game-spec-effect-set-attribute  display-row">
         <span class="keep-whitespace">set the value of </span>
         <game-spec-selector-attribute
           :selector="effect.attributeSelector"
@@ -23,7 +23,7 @@ import GameSpecSelectorAttribute from './GameSpecSelectorAttribute.vue'
 import GameSpecSelectorValue from './GameSpecSelectorValue.vue'
 
 export default {
-  name: 'GameSpecRuleEffectSetAttribute',
+  name: 'GameSpecEffectSetAttribute',
   props: {
     effect: {
       type: EffectSetAttribute,

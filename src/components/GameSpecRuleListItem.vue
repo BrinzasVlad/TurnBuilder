@@ -9,7 +9,7 @@
         @input="(newTrigger) => triggerChange(newTrigger)"
       />
       <span class="keep-whitespace">, </span>
-      <game-spec-rule-effect
+      <game-spec-effect
         :effect="rule.effect"
         :specialOptions="specialOptions"
         @change="(newEffect) => effectChange(newEffect)"
@@ -20,13 +20,13 @@
 <script>
 import TriggerTypes from '@/utils/TriggerTypes'
 import vSelect from 'vue-select'
-import GameSpecRuleEffect from './GameSpecRuleEffect.vue'
+import GameSpecEffect from './GameSpecEffect.vue'
 
 export default {
   name: 'GameSpecRuleListItem',
   components: {
     vSelect,
-    GameSpecRuleEffect
+    GameSpecEffect
   },
   props: {
     rule: {
