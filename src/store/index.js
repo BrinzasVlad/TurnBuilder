@@ -172,9 +172,9 @@ export default new Vuex.Store({
             // For now, just declare it; in the future, we might put a default value there
             Vue.set(tile, attribute.name, undefined)
           })
-          Vue.set(tile, 'Row', row)
-          Vue.set(tile, 'Col', col)
-          Vue.set(tile, 'Content', null)
+          tile.Row = row
+          tile.Column = col
+          tile.Content = null
 
           state.gamePlay.grid.tiles[row].push(tile)
         }
@@ -204,12 +204,13 @@ export default new Vuex.Store({
         Vue.set(piece, attribute.name, undefined)
       })
 
+      // Re-fetch the target tile from the grid, just in case
+      const pieceTile = state.gamePlay.grid.tiles[targetTile.Row][targetTile.Column]
       Vue.set(piece, 'Position', targetTile)
       Vue.set(piece, 'Owner', owner)
 
       state.gamePlay.pieces.push(piece)
-
-      state.gamePlay.grid.tiles[piece.Position.Row][piece.Position.Col].Content = piece
+      pieceTile.Content = piece
     }
   },
   actions: {
