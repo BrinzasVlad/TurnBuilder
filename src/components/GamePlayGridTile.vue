@@ -4,6 +4,7 @@
         v-if="tile.Content"
         :piece="tile.Content"
         @piece-clicked="(piece) => pieceClicked(piece)"
+        @piece-viewed="(piece) => pieceViewed(piece)"
       />
     </div>
 </template>
@@ -31,6 +32,9 @@ export default {
     },
     pieceClicked (piece) {
       this.$emit('piece-clicked', piece)
+    },
+    pieceViewed (piece) {
+      this.$emit('piece-viewed', piece)
     }
   }
 }

@@ -15,6 +15,7 @@
           :tile="tile"
           @tile-clicked="(tile) => tileClicked(tile)"
           @piece-clicked="(piece) => pieceClicked(piece)"
+          @piece-viewed="(piece) => pieceViewed(piece)"
         />
       </div>
     </div>
@@ -78,6 +79,9 @@ export default {
     pieceClicked (piece) {
       this.$store.dispatch('pieceSelected', piece)
     },
+    pieceViewed (piece) {
+      this.$emit('piece-viewed', piece)
+    },
     updateParentDimensions () {
       const { width, height } = this.$el.getBoundingClientRect()
       this.parentWidth = width
@@ -93,6 +97,7 @@ export default {
   overflow: auto;
 }
 .game-play-grid-container {
+  margin: auto; /* Center element */
   --tile-min-size: 30px;
   --grid-min-width: calc(var(--tile-min-size) * var(--grid-cols));
   --grid-min-height: calc(var(--tile-min-size) * var(--grid-rows));

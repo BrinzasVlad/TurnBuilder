@@ -4,6 +4,8 @@
         :src="require('../assets/icons/' + piece.icon)"
         class="piece-image"
         @mousedown="clicked"
+        @mouseenter="viewed"
+        @mouseleave="stopViewed"
       />
     </div>
 </template>
@@ -23,6 +25,12 @@ export default {
   methods: {
     clicked () {
       this.$emit('piece-clicked', this.piece)
+    },
+    viewed () {
+      this.$emit('piece-viewed', this.piece)
+    },
+    stopViewed () {
+      this.$emit('piece-viewed', null)
     }
   }
 }

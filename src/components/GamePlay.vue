@@ -1,12 +1,13 @@
 <template>
     <div class="game-play">
-      <game-play-grid />
-      <div class="game-play-sidebar">TODO: Sidebar</div>
+      <game-play-grid @piece-viewed="(pieceViewed) => changeViewedPiece(pieceViewed)" />
+      <game-play-sidebar :viewedPiece="viewedPiece" />
     </div>
 </template>
 
 <script>
 import GamePlayGrid from './GamePlayGrid.vue'
+import GamePlaySidebar from './GamePlaySidebar.vue'
 
 export default {
   name: 'GamePlay',
@@ -18,10 +19,19 @@ export default {
     this.$store.commit('gamePlayReset')
   },
   components: {
-    GamePlayGrid
+    GamePlayGrid,
+    GamePlaySidebar
+  },
+  data () {
+    return {
+      viewedPiece: null
+    }
   },
   computed: {
     console: () => console
+  },
+  methods: {
+    changeViewedPiece (newPieceViewed) { this.viewedPiece = newPieceViewed }
   }
 }
 </script>
@@ -32,13 +42,12 @@ export default {
   flex-direction: row;
 }
 .game-play-grid {
-  flex-grow: 80;
+  width: 75%;
   height: 100%;
 }
 .game-play-sidebar {
-  flex-grow: 20;
+  width: 25%;
   min-width: 15rem;
-  background-color: lightgreen;
   height: 100%;
 }
 </style>
