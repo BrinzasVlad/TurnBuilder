@@ -11,8 +11,8 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
-    "vue-router": "^3.3.4",
-    "vue-select": "^3.10.5",
+    "vue-router": "^3.4.3",
+    "vue-select": "^3.10.8",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
@@ -32,7 +32,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "identity-obj-proxy": "^3.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
     "root": true,
