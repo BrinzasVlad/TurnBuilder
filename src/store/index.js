@@ -187,9 +187,9 @@ export default new Vuex.Store({
       })
     },
     // Game Effect Results
-    setAttributeValue (state, { attributeName, objectFromState, valueToSet, triggerArgs }) {
-      const objectToSetAttributeFor = objectFromState(state.gamePlay, triggerArgs)
-      objectToSetAttributeFor[attributeName] = valueToSet
+    setAttributeValue (state, { attributeName, objectFromState, valueToSet }) {
+      const objectBearingAttribute = objectFromState(state.gamePlay)
+      objectBearingAttribute[attributeName] = valueToSet
     },
     createPiece (state, { pieceName, targetTile, owner }) {
       const piece = {}
@@ -204,13 +204,11 @@ export default new Vuex.Store({
         Vue.set(piece, attribute.name, undefined)
       })
 
-      // Re-fetch the target tile from the grid, just in case
-      const pieceTile = state.gamePlay.grid.tiles[targetTile.Row][targetTile.Column]
-      Vue.set(piece, 'Position', targetTile)
-      Vue.set(piece, 'Owner', owner)
+      piece.Position = targetTile
+      piece.Owner = owner
 
       state.gamePlay.pieces.push(piece)
-      pieceTile.Content = piece
+      targetTile.Content = piece
     }
   },
   actions: {
@@ -233,8 +231,8 @@ export default new Vuex.Store({
     },
 
     // Possible actions
-    setAttributeValue ({ commit }, { attributeName, objectFromState, valueToSet, triggerArgs }) {
-      commit('setAttributeValue', { attributeName, objectFromState, valueToSet, triggerArgs })
+    setAttributeValue ({ commit }, { attributeName, objectFromState, valueToSet }) {
+      commit('setAttributeValue', { attributeName, objectFromState, valueToSet })
       // One might need to determine what exactly was changed (game
       // attribute, player attribute, piece attribute, etc.) to trigger the
       // right rules once such triggers are added.

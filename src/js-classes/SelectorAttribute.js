@@ -20,9 +20,8 @@ export default class SelectorAttribute {
    * attribute pointed by this selector (for instance, if this selector refers
    * to the attribute 'Owner' of a certain piece, the objectFromState will,
    * when passed the game state, return the given piece) from the game state
-   * and the trigger arguments
    *
-   * Accessing objectFromState(gameState, triggerArgs)[attributeName] should
+   * Accessing objectFromState(gameState)[attributeName] should
    * allow one to alter the attribute
    *
    * @param {*} gameState The complete game state at the moment when the selector was

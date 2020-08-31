@@ -18,7 +18,7 @@ export default class SelectorAttributeGameAttr extends SelectorAttribute {
   getAttribute (_gameState, _triggerArgs) {
     return {
       attributeName: this._gameAttribute.name,
-      objectFromState: (gameState, _triggerArgs) => gameState.gameAttributes
+      objectFromState: (gameState) => gameState.gameAttributes
     }
   }
 }
