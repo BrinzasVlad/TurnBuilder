@@ -19,6 +19,6 @@ export default class SelectorValueExactNumber extends SelectorValue {
   }
 
   getValue (_gameState, _triggerArgs) {
-    return this._value
+    return (_gameState) => this._value
   }
 }

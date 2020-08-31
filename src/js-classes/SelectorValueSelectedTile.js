@@ -7,7 +7,7 @@ export default class SelectorValueSelectedTile extends SelectorValue {
   }
 
   getValue (_gameState, triggerArgs) {
-    const tile = triggerArgs
-    return tile
+    const selectedTile = triggerArgs
+    return (gameState) => gameState.grid.tiles[selectedTile.Row][selectedTile.Column]
   }
 }

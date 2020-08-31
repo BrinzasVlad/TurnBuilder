@@ -23,8 +23,8 @@ export default class EffectSetAttribute extends Effect {
 
   execute (gameState, dispatch, triggerArgs) {
     const { attributeName, objectFromState } = this._attributeSelector.getAttribute(gameState, triggerArgs)
-    const valueToSet = this._valueSelector.getValue(gameState, triggerArgs)
+    const valueFromState = this._valueSelector.getValue(gameState, triggerArgs)
 
-    dispatch('setAttributeValue', { attributeName, objectFromState, valueToSet })
+    dispatch('setAttributeValue', { attributeName, objectFromState, valueFromState })
   }
 }

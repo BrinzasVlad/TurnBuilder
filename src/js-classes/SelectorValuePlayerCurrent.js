@@ -6,7 +6,7 @@ export default class SelectorValuePlayerCurrent extends SelectorValue {
     return AttributeTypes.PLAYER
   }
 
-  getValue (gameState, _triggerArgs) {
-    return gameState.gameAttributes['Current Player']
+  getValue (_gameState, _triggerArgs) {
+    return (gameState) => gameState.gameAttributes['Current Player']
   }
 }

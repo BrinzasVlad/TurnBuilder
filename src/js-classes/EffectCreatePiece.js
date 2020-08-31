@@ -31,9 +31,9 @@ export default class EffectCreatePiece extends Effect {
 
   execute (gameState, dispatch, triggerArgs) {
     const pieceName = this._piece.name
-    const targetTile = this._tileSelector.getValue(gameState, triggerArgs)
-    const owner = this.ownerSelector.getValue(gameState, triggerArgs)
+    const tileFromState = this._tileSelector.getValue(gameState, triggerArgs)
+    const ownerFromState = this.ownerSelector.getValue(gameState, triggerArgs)
 
-    dispatch('createPiece', { pieceName, targetTile, owner })
+    dispatch('createPiece', { pieceName, tileFromState, ownerFromState })
   }
 }

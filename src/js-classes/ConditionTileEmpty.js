@@ -14,7 +14,8 @@ export default class ConditionTileEmpt extends Condition {
   get tileSelector () { return this._tileSelector }
 
   isTrue (gameState, triggerArgs) {
-    const tileToAssess = this._tileSelector.getValue(gameState, triggerArgs)
+    const tileFromState = this._tileSelector.getValue(gameState, triggerArgs)
+    const tileToAssess = tileFromState(gameState)
 
     if (tileToAssess.Content === undefined || tileToAssess.Content === null) {
       return true // A tile with no content is empty

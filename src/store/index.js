@@ -187,11 +187,12 @@ export default new Vuex.Store({
       })
     },
     // Game Effect Results
-    setAttributeValue (state, { attributeName, objectFromState, valueToSet }) {
+    setAttributeValue (state, { attributeName, objectFromState, valueFromState }) {
       const objectBearingAttribute = objectFromState(state.gamePlay)
+      const valueToSet = valueFromState(state.gamePlay)
       objectBearingAttribute[attributeName] = valueToSet
     },
-    createPiece (state, { pieceName, targetTile, owner }) {
+    createPiece (state, { pieceName, tileFromState, ownerFromState }) {
       const piece = {}
       const pieceSpecification = state.gameSpec.pieces.find((piece) => piece.name === pieceName)
 
@@ -204,11 +205,11 @@ export default new Vuex.Store({
         Vue.set(piece, attribute.name, undefined)
       })
 
-      piece.Position = targetTile
-      piece.Owner = owner
+      piece.Position = tileFromState(state.gamePlay)
+      piece.Owner = ownerFromState(state.gamePlay)
 
       state.gamePlay.pieces.push(piece)
-      targetTile.Content = piece
+      piece.Position.Content = piece
     }
   },
   actions: {
@@ -231,14 +232,14 @@ export default new Vuex.Store({
     },
 
     // Possible actions
-    setAttributeValue ({ commit }, { attributeName, objectFromState, valueToSet }) {
-      commit('setAttributeValue', { attributeName, objectFromState, valueToSet })
+    setAttributeValue ({ commit }, { attributeName, objectFromState, valueFromState }) {
+      commit('setAttributeValue', { attributeName, objectFromState, valueFromState })
       // One might need to determine what exactly was changed (game
       // attribute, player attribute, piece attribute, etc.) to trigger the
       // right rules once such triggers are added.
     },
-    createPiece ({ commit }, { pieceName, targetTile, owner }) {
-      commit('createPiece', { pieceName, targetTile, owner })
+    createPiece ({ commit }, { pieceName, tileFromState, ownerFromState }) {
+      commit('createPiece', { pieceName, tileFromState, ownerFromState })
     }
   },
   getters: {

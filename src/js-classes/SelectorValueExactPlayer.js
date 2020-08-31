@@ -17,8 +17,8 @@ export default class SelectorValueExactPlayer extends SelectorValue {
     return AttributeTypes.PLAYER
   }
 
-  getValue (gameState, _triggerArgs) {
+  getValue (_gameState, _triggerArgs) {
     const playerIndex = this._playerNumber - 1
-    return gameState.players[playerIndex]
+    return (gameState) => gameState.players[playerIndex]
   }
 }
