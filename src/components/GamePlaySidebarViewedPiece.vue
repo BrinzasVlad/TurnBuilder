@@ -10,23 +10,23 @@
           v-for="{ attributeName, attributeValue, attributeType } in viewedPieceAttributes"
           :key="attributeName"
         >
-          <span class="sidebar-player-attribute-name  keep-whitespace">{{ attributeName }}: </span>
+          <span class="sidebar-piece-attribute-name  keep-whitespace">{{ attributeName }}: </span>
           <game-play-short-display-player
-            class="sidebar-player-attribute-value"
+            class="sidebar-piece-attribute-value"
             v-if="attributeType === 'player'"
             :player="attributeValue"
           />
           <game-play-short-display-tile
-            class="sidebar-player-attribute-value"
+            class="sidebar-piece-attribute-value"
             v-else-if="attributeType === 'tile'"
             :tile="attributeValue"
           />
           <game-play-short-display-piece
-            class="sidebar-player-attribute-value"
+            class="sidebar-piece-attribute-value"
             v-else-if="attributeType === 'piece'"
             :piece="attributeValue"
           />
-          <span class="sidebar-player-attribute-value  keep-whitespace" v-else>{{ attributeValue }}</span>
+          <span class="sidebar-piece-attribute-value  keep-whitespace" v-else>{{ attributeValue }}</span>
         </li>
       </ul>
     </div>
