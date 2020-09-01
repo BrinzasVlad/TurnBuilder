@@ -25,6 +25,7 @@
 import vSelect from 'vue-select'
 import SelectorAttribute from '@/js-classes/SelectorAttribute'
 import GameSpecSelectorAttributeGameAttr from './GameSpecSelectorAttributeGameAttr.vue'
+import GameSpecSelectorAttributeFromAttr from './GameSpecSelectorAttributeFromAttr.vue'
 
 export default {
   name: 'GameSpecSelectorAttribute',
@@ -40,13 +41,15 @@ export default {
   },
   components: {
     vSelect,
-    GameSpecSelectorAttributeGameAttr
+    GameSpecSelectorAttributeGameAttr,
+    GameSpecSelectorAttributeFromAttr
   },
   computed: {
     console: () => console,
     attributeSelectorsList () {
       const attributeSelectorsToAdd = [
-        GameSpecSelectorAttributeGameAttr
+        GameSpecSelectorAttributeGameAttr,
+        GameSpecSelectorAttributeFromAttr
       ]
       return attributeSelectorsToAdd.map((selector) => {
         return {
