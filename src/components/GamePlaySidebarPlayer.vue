@@ -4,11 +4,26 @@
       <ul>
         <li
           class="sidebar-player-attribute"
-          v-for="{ attributeName, attributeValue } in currentPlayerAttributes"
+          v-for="{ attributeName, attributeValue, attributeType } in currentPlayerAttributes"
           :key="attributeName"
         >
           <span class="sidebar-player-attribute-name  keep-whitespace">{{ attributeName }}: </span>
-          <span class="sidebar-player-attribute-value  keep-whitespace">{{ attributeValue }}</span>
+          <game-play-short-display-player
+            class="sidebar-player-attribute-value"
+            v-if="attributeType === 'player'"
+            :player="attributeValue"
+          />
+          <game-play-short-display-tile
+            class="sidebar-player-attribute-value"
+            v-else-if="attributeType === 'tile'"
+            :tile="attributeValue"
+          />
+          <game-play-short-display-piece
+            class="sidebar-player-attribute-value"
+            v-else-if="attributeType === 'piece'"
+            :piece="attributeValue"
+          />
+          <span class="sidebar-player-attribute-value  keep-whitespace" v-else>{{ attributeValue }}</span>
         </li>
       </ul>
     </div>
@@ -35,12 +50,18 @@ export default {
           if (attributeValue === undefined) attributeValue = 'unspecified'
           if (attributeValue === null) attributeValue = 'none'
 
-          if (typeof attributeValue === 'object') {
-            // FIXME: actually display something for objects! We should probably defer this to some other component
-            attributeValue = 'object'
+          // Attribute Type
+          let attributeType = typeof attributeValue
+          if (attributeType === 'object') {
+            // TODO: maybe we should have a better way of determining type than looking for properties?
+            if ('playerNumber' in attributeValue) attributeType = 'player'
+            else if ('Row' in attributeValue && 'Column' in attributeValue) attributeType = 'tile'
+            else if ('pieceTypeName' in attributeValue && 'icon' in attributeValue) attributeType = 'piece'
+            else throw new Error('Unknown gameplay attribute ' + attributeValue)
           }
 
-          attributes.push({ attributeName, attributeValue })
+          // Push to list
+          attributes.push({ attributeName, attributeValue, attributeType })
         }
       }
 
