@@ -1,12 +1,14 @@
 <template>
     <div class="game-play-sidebar">
       <game-play-sidebar-player />
+      <game-play-sidebar-game-attr />
       <game-play-sidebar-viewed-piece v-if="viewedPiece" :viewedPiece="viewedPiece" />
     </div>
 </template>
 
 <script>
 import GamePlaySidebarPlayer from './GamePlaySidebarPlayer.vue'
+import GamePlaySidebarGameAttr from './GamePlaySidebarGameAttr.vue'
 import GamePlaySidebarViewedPiece from './GamePlaySidebarViewedPiece.vue'
 
 export default {
@@ -19,6 +21,7 @@ export default {
   },
   components: {
     GamePlaySidebarPlayer,
+    GamePlaySidebarGameAttr,
     GamePlaySidebarViewedPiece
   },
   computed: {
@@ -33,10 +36,13 @@ export default {
   flex-direction: column;
 }
 .game-play-sidebar-player {
-  flex-grow: 40;
+  flex-grow: 25;
+}
+.game-play-sidebar-game-attr {
+  flex-grow: 25;
 }
 .game-play-sidebar-viewed {
-  flex-grow: 60;
+  flex-grow: 50;
   background-color: tomato;
 }
 </style>
