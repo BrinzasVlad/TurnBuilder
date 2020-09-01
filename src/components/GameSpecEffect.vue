@@ -27,6 +27,7 @@ import Effect from '@/js-classes/Effect'
 import GameSpecEffectSetAttribute from './GameSpecEffectSetAttribute.vue'
 import GameSpecEffectCreatePiece from './GameSpecEffectCreatePiece.vue'
 import GameSpecEffectIfThen from './GameSpecEffectIfThen.vue'
+import GameSpecEffectAndThen from './GameSpecEffectAndThen.vue'
 
 export default {
   name: 'GameSpecEffect',
@@ -45,7 +46,8 @@ export default {
     vSelect,
     GameSpecEffectSetAttribute,
     GameSpecEffectCreatePiece,
-    GameSpecEffectIfThen
+    GameSpecEffectIfThen,
+    GameSpecEffectAndThen
   },
   computed: {
     console: () => console,
@@ -53,7 +55,8 @@ export default {
       const effectsToAdd = [
         GameSpecEffectSetAttribute,
         GameSpecEffectCreatePiece,
-        GameSpecEffectIfThen
+        GameSpecEffectIfThen,
+        GameSpecEffectAndThen
       ]
       return effectsToAdd.map(effect => {
         return {
