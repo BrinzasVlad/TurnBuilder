@@ -23,6 +23,10 @@ export default {
     selector: {
       type: SelectorAttributeGameAttr,
       required: true
+    },
+    expectedType: {
+      type: String, // TODO: this is actually an AttributeTypes entry
+      required: false
     }
   },
   components: {
@@ -32,7 +36,11 @@ export default {
     console: () => console,
     text () { return 'game attribute ...' },
     selectorClass () { return SelectorAttributeGameAttr },
-    gameAttributes () { return this.$store.state.gameSpec.gameAttributes }
+    gameAttributes () {
+      const allGameAttributes = this.$store.state.gameSpec.gameAttributes
+      if (this.expectedType) return allGameAttributes.filter((attribute) => attribute.type === this.expectedType)
+      else return allGameAttributes
+    }
   },
   methods: {
     attributeChanged (newAttribute) {

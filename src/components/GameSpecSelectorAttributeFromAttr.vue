@@ -35,6 +35,10 @@ export default {
       type: SelectorAttributeFromAttr,
       required: true
     },
+    expectedType: {
+      type: String, // TODO: this is actually an AttributeTypes entry
+      required: false
+    },
     specialOptions: {
       type: Array,
       required: false
@@ -54,41 +58,51 @@ export default {
       if (this.selector && this.selector.valueSelector) return this.selector.valueSelector.getValueType()
       else return null
     },
-    attributeOptions () {
+    attributeList () {
       if (!this.valueType) return [] // If we do not have a value type, we cannot compute the possible attributes
 
-      const attributeHashTable = {} // Only needed in one case, but linter requires we don't declare it in the case
+      let allAttributesList
+      const attributeHashTable = {} // Needed only for the piece case currently
 
       switch (this.valueType) {
         case AttributeTypes.PLAYER:
-          return this.$store.state.gameSpec.players.attributes.map((attribute) => {
-            return { label: attribute.name, attribute: attribute }
-          })
+          allAttributesList = this.$store.state.gameSpec.players.attributes
+          break
         case AttributeTypes.TILE:
-          return this.$store.state.gameSpec.grid.attributes.map((attribute) => {
-            return { label: attribute.name, attribute: attribute }
-          })
+          allAttributesList = this.$store.state.gameSpec.grid.attributes
+          break
         case AttributeTypes.PIECE:
-          // TODO: large case block should be refactored to be more readable
+          // Extract all unique attribute options from all existing pieces
           this.$store.state.gameSpec.pieces.forEach((piece) => {
             piece.attributes.forEach((attribute) => {
               if (!attributeHashTable[attribute.name + attribute.type]) {
-                // FIXME: this kind of cloning is fragile; if the constructor changes, it breaks
-                // Currently, Attribute only has three properties: name, type and editable.
-                // However, if more attributes are added, this code will not clone them.
-                // Ideally, the constructor of Attribute should change to be a clone constructor
-                // (especially since the usual constructor is not very used).
-                const clonedAttribute = new Attribute(attribute.name, attribute.type, attribute.editable)
-                attributeHashTable[clonedAttribute.name + clonedAttribute.type] = {
-                  label: clonedAttribute.name + ' (' + clonedAttribute.type + ')',
-                  attribute: clonedAttribute
-                }
+                // Clone the attribute, just in case
+                attributeHashTable[attribute.name + attribute.type] = new Attribute(attribute)
               }
             })
           })
-          return Object.values(attributeHashTable)
+          allAttributesList = Object.values(attributeHashTable)
+          break
         default:
           throw new Error('Attribute type ' + this.valueType + ' has no associated attribute list')
+      }
+
+      if (this.expectedType) return allAttributesList.filter((attribute) => attribute.type === this.expectedType)
+      else return allAttributesList
+    },
+    attributeOptions () {
+      if (this.attributeList) {
+        if (this.valueType === AttributeTypes.PIECE) {
+          // Piece selection may mean multiple attributes with same name and different type
+          // So we must display the attribute type in the label, too
+          return this.attributeList.map((attribute) => {
+            return { attribute, label: `${attribute.name} (${attribute.type})` }
+          })
+        } else {
+          return this.attributeList.map((attribute) => { return { attribute, label: attribute.name } })
+        }
+      } else {
+        return []
       }
     },
     currentOption () {

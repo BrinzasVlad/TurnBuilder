@@ -13,6 +13,7 @@
           <component
             :is="component"
             :selector="selector"
+            :expectedType="expectedType"
             :specialOptions="specialOptions"
             @change="(newChildSelectorValue) => childSelectorChange(newChildSelectorValue)"
           />
@@ -32,6 +33,10 @@ export default {
   props: {
     selector: {
       type: SelectorAttribute,
+      required: false
+    },
+    expectedType: {
+      type: String, // TODO: this is actually an AttributeTypes entry
       required: false
     },
     specialOptions: {

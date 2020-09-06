@@ -13,6 +13,7 @@
           <component
             :is="component"
             :selector="selector"
+            :expectedType="expectedType"
             :specialOptions="specialOptions"
             @change="(newChildSelectorValue) => childSelectorChange(newChildSelectorValue)" />
         </template>
@@ -22,7 +23,9 @@
 
 <script>
 import vSelect from 'vue-select'
+import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from '@/js-classes/SelectorValue'
+import GameSpecSelectorValueOfAttribute from './GameSpecSelectorValueOfAttribute.vue'
 import GameSpecSelectorValueNumberInput from './GameSpecSelectorValueNumberInput.vue'
 
 export default {
@@ -40,12 +43,15 @@ export default {
   },
   components: {
     vSelect,
+    GameSpecSelectorValueOfAttribute,
     GameSpecSelectorValueNumberInput
   },
   computed: {
     console: () => console,
+    expectedType: () => AttributeTypes.NUMBER,
     numberSelectorsList () {
       const numberSelectorsToAdd = [
+        GameSpecSelectorValueOfAttribute,
         GameSpecSelectorValueNumberInput
       ]
       return numberSelectorsToAdd.map((selector) => {
