@@ -13,6 +13,7 @@
           <component
             :is="component"
             :selector="selector"
+            :expectedType="expectedType"
             :specialOptions="specialOptions"
             @change="(newChildSelectorValue) => childSelectorChange(newChildSelectorValue)" />
         </template>
@@ -22,7 +23,9 @@
 
 <script>
 import vSelect from 'vue-select'
+import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from '@/js-classes/SelectorValue'
+import GameSpecSelectorValueOfAttribute from './GameSpecSelectorValueOfAttribute.vue'
 import GameSpecSelectorValueTextInput from './GameSpecSelectorValueTextInput.vue'
 
 export default {
@@ -40,12 +43,15 @@ export default {
   },
   components: {
     vSelect,
+    GameSpecSelectorValueOfAttribute,
     GameSpecSelectorValueTextInput
   },
   computed: {
     console: () => console,
+    expectedType: () => AttributeTypes.TEXT,
     textSelectorsList () {
       const textSelectorsToAdd = [
+        GameSpecSelectorValueOfAttribute,
         GameSpecSelectorValueTextInput
       ]
       return textSelectorsToAdd.map((selector) => {
