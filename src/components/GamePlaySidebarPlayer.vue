@@ -30,8 +30,17 @@
 </template>
 
 <script>
+import GamePlayShortDisplayPlayer from './GamePlayShortDisplayPlayer'
+import GamePlayShortDisplayTile from './GamePlayShortDisplayTile'
+import GamePlayShortDisplayPiece from './GamePlayShortDisplayPiece'
+
 export default {
   name: 'GamePlaySidebarPlayer',
+  components: {
+    GamePlayShortDisplayPlayer,
+    GamePlayShortDisplayTile,
+    GamePlayShortDisplayPiece
+  },
   computed: {
     console: () => console,
     currentPlayer () { return this.$store.state.gamePlay.gameAttributes['Current Player'] },
