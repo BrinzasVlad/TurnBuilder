@@ -12,7 +12,7 @@ export default class SelectorAttribute {
   }
 
   /**
-   * Returns the pair { attributeName, attributeFromState } for the
+   * Returns the pair { attributeName, objectFromState } for the
    * attribute pointed by this selector. The meaning of the returned values
    * is as follows:
    * * `attributeName` - The name of the attribute pointed by this selector
