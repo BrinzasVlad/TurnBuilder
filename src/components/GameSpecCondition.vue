@@ -22,7 +22,8 @@
 <script>
 import vSelect from 'vue-select'
 import Condition from '@/js-classes/Condition'
-import GameSpecConditionTileEmpty from './GameSpecConditionTileEmpty'
+import GameSpecConditionEqualTo from './GameSpecConditionEqualTo.vue'
+import GameSpecConditionTileEmpty from './GameSpecConditionTileEmpty.vue'
 
 export default {
   name: 'GameSpecCondition',
@@ -38,12 +39,14 @@ export default {
   },
   components: {
     vSelect,
+    GameSpecConditionEqualTo,
     GameSpecConditionTileEmpty
   },
   computed: {
     console: () => console,
     conditionsList () {
       const conditionsToAdd = [
+        GameSpecConditionEqualTo,
         GameSpecConditionTileEmpty
       ]
       return conditionsToAdd.map((condition) => {
