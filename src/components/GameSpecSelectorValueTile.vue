@@ -27,6 +27,7 @@ import AttributeTypes from '@/utils/AttributeTypes'
 import SpecialOptions from '@/utils/SpecialOptions'
 import SelectorValue from '@/js-classes/SelectorValue'
 import GameSpecSelectorValueOfAttribute from './GameSpecSelectorValueOfAttribute.vue'
+import GameSpecSelectorValueTileAt from './GameSpecSelectorValueTileAt.vue'
 import GameSpecSelectorValueTileSelected from './GameSpecSelectorValueTileSelected.vue'
 
 export default {
@@ -45,6 +46,7 @@ export default {
   components: {
     vSelect,
     GameSpecSelectorValueOfAttribute,
+    GameSpecSelectorValueTileAt,
     GameSpecSelectorValueTileSelected
   },
   computed: {
@@ -52,7 +54,8 @@ export default {
     expectedType: () => AttributeTypes.TILE,
     tileSelectorsList () {
       const tileSelectorsToAdd = [
-        GameSpecSelectorValueOfAttribute
+        GameSpecSelectorValueOfAttribute,
+        GameSpecSelectorValueTileAt
       ]
       if (this.specialOptions && this.specialOptions.includes(SpecialOptions.TILE_SELECTED)) {
         tileSelectorsToAdd.push(GameSpecSelectorValueTileSelected)
