@@ -29,6 +29,7 @@ import GameSpecEffectChangeAttributeBy from './GameSpecEffectChangeAttributeBy.v
 import GameSpecEffectCreatePiece from './GameSpecEffectCreatePiece.vue'
 import GameSpecEffectIfThen from './GameSpecEffectIfThen.vue'
 import GameSpecEffectAndThen from './GameSpecEffectAndThen.vue'
+import GameSpecEffectPlayerWinsGame from './GameSpecEffectPlayerWinsGame.vue'
 
 export default {
   name: 'GameSpecEffect',
@@ -49,7 +50,8 @@ export default {
     GameSpecEffectChangeAttributeBy,
     GameSpecEffectCreatePiece,
     GameSpecEffectIfThen,
-    GameSpecEffectAndThen
+    GameSpecEffectAndThen,
+    GameSpecEffectPlayerWinsGame
   },
   computed: {
     console: () => console,
@@ -59,7 +61,8 @@ export default {
         GameSpecEffectChangeAttributeBy,
         GameSpecEffectCreatePiece,
         GameSpecEffectIfThen,
-        GameSpecEffectAndThen
+        GameSpecEffectAndThen,
+        GameSpecEffectPlayerWinsGame
       ]
       return effectsToAdd.map(effect => {
         return {

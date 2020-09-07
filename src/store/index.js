@@ -240,6 +240,19 @@ export default new Vuex.Store({
     },
     createPiece ({ commit }, { pieceName, tileFromState, ownerFromState }) {
       commit('createPiece', { pieceName, tileFromState, ownerFromState })
+    },
+    endGame ({ commit, dispatch, state }, { winnerFromState }) {
+      const winner = winnerFromState(state.gamePlay)
+
+      // FIXME: we should present a more relevant victory screen - in the very least a modal dialog of some sort
+      // On that topic, we should maybe also allow the final game state to be presented to the players before resetting
+      alert('Player ' + winner.playerNumber + ' has won the game!')
+
+      // Reset the game
+      // TODO: extract to separate action, since it will be needed for a "Restart" button, too
+      commit('gamePlayReset')
+      commit('gamePlaySet')
+      dispatch('gameStart')
     }
   },
   getters: {
