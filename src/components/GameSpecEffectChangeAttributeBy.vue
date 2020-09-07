@@ -11,6 +11,7 @@
       <game-spec-selector-attribute
         :selector="effect.attributeSelector"
         :specialOptions="specialOptions"
+        :expectedType="expectedType"
         @change="(newAttributeSelector) => attributeSelectorChange(newAttributeSelector)"
       />
       <span class="keep-whitespace"> by </span>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import AttributeTypes from '@/utils/AttributeTypes'
 import EffectChangeAttributeBy from '@/js-classes/EffectChangeAttributeBy'
 import vSelect from 'vue-select'
 import GameSpecSelectorAttribute from './GameSpecSelectorAttribute.vue'
@@ -54,6 +56,7 @@ export default {
       else if (this.effect.valueToChangeBy > 0) return 'increase'
       else return 'decrease'
     },
+    expectedType: () => AttributeTypes.NUMBER,
     numberValue: {
       get () {
         if (this.effect.valueToChangeBy === undefined) return null
