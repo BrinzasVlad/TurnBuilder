@@ -25,6 +25,7 @@
 import vSelect from 'vue-select'
 import Effect from '@/js-classes/Effect'
 import GameSpecEffectSetAttribute from './GameSpecEffectSetAttribute.vue'
+import GameSpecEffectChangeAttributeBy from './GameSpecEffectChangeAttributeBy.vue'
 import GameSpecEffectCreatePiece from './GameSpecEffectCreatePiece.vue'
 import GameSpecEffectIfThen from './GameSpecEffectIfThen.vue'
 import GameSpecEffectAndThen from './GameSpecEffectAndThen.vue'
@@ -45,6 +46,7 @@ export default {
   components: {
     vSelect,
     GameSpecEffectSetAttribute,
+    GameSpecEffectChangeAttributeBy,
     GameSpecEffectCreatePiece,
     GameSpecEffectIfThen,
     GameSpecEffectAndThen
@@ -54,6 +56,7 @@ export default {
     effectsList: function () {
       const effectsToAdd = [
         GameSpecEffectSetAttribute,
+        GameSpecEffectChangeAttributeBy,
         GameSpecEffectCreatePiece,
         GameSpecEffectIfThen,
         GameSpecEffectAndThen
