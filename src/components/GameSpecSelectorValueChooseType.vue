@@ -66,8 +66,8 @@ export default {
   computed: {
     console: () => console,
     availableOptions () {
-      return AttributeTypes.allValues
-        .filter((attributeType) => !this.forbiddenTypes.includes(attributeType))
+      if (!this.forbiddenTypes) return AttributeTypes.allValues
+      else return AttributeTypes.allValues.filter((attributeType) => !this.forbiddenTypes.includes(attributeType))
     },
     currentOption () {
       // If the prop has a type, use that one. Else, use what the user picks.
@@ -78,6 +78,7 @@ export default {
   methods: {
     typeChange (newType) {
       this.selectedValueType = newType
+      this.$emit('change', null) // Reset the selector, since the value type desired changed
     },
     valueSelectorChange (newValueSelector) {
       this.$emit('change', newValueSelector)
