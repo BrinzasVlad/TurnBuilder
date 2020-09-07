@@ -27,6 +27,7 @@ import AttributeTypes from '@/utils/AttributeTypes'
 import SpecialOptions from '@/utils/SpecialOptions'
 import SelectorValue from '@/js-classes/SelectorValue'
 import GameSpecSelectorValueOfAttribute from './GameSpecSelectorValueOfAttribute.vue'
+import GameSpecSelectorValuePieceAt from './GameSpecSelectorValuePieceAt.vue'
 import GameSpecSelectorValuePieceSelected from './GameSpecSelectorValuePieceSelected.vue'
 
 export default {
@@ -45,6 +46,7 @@ export default {
   components: {
     vSelect,
     GameSpecSelectorValueOfAttribute,
+    GameSpecSelectorValuePieceAt,
     GameSpecSelectorValuePieceSelected
   },
   computed: {
@@ -52,7 +54,8 @@ export default {
     expectedType: () => AttributeTypes.PIECE,
     pieceSelectorsList () {
       const pieceSelectorsToAdd = [
-        GameSpecSelectorValueOfAttribute
+        GameSpecSelectorValueOfAttribute,
+        GameSpecSelectorValuePieceAt
       ]
       if (this.specialOptions && this.specialOptions.includes(SpecialOptions.PIECE_SELECTED)) {
         pieceSelectorsToAdd.push(GameSpecSelectorValuePieceSelected)
