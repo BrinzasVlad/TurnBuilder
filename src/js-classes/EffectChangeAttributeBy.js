@@ -1,10 +1,11 @@
 import Effect from './Effect'
 
 export default class EffectChangeAttributeBy extends Effect {
-  constructor (attributeSelector, valueToChangeBy) {
+  constructor (attributeSelector, valueSelector, shouldDecrease = false) {
     super()
     this._attributeSelector = attributeSelector
-    this._valueToChangeBy = valueToChangeBy
+    this._valueSelector = valueSelector
+    this._shouldDecrease = shouldDecrease
   }
 
   set attributeSelector (newAttributeSelector) {
@@ -14,17 +15,27 @@ export default class EffectChangeAttributeBy extends Effect {
 
   get attributeSelector () { return this._attributeSelector }
 
-  set valueToChangeBy (newValueToChangeBy) {
+  set valueSelector (newValueSelector) {
     // TODO: test that it is a number
-    this._valueToChangeBy = newValueToChangeBy
+    this._valueSelector = newValueSelector
   }
 
-  get valueToChangeBy () { return this._valueToChangeBy }
+  get valueSelector () { return this._valueSelector }
+
+  set shouldDecrease (newValue) {
+    // TODO: test that it is a boolean
+    this._shouldDecrease = newValue
+  }
+
+  get shouldDecrease () { return this._shouldDecrease }
 
   execute (gameState, dispatch, triggerArgs) {
     const { attributeName, objectFromState } = this._attributeSelector.getAttribute(gameState, triggerArgs)
+    const changeFromState = this._valueSelector.getValue(gameState, triggerArgs)
+
     const valueFromState = (gameState) => {
-      return objectFromState(gameState)[attributeName] + this._valueToChangeBy
+      if (this._shouldDecrease) return objectFromState(gameState)[attributeName] - changeFromState(gameState)
+      else return objectFromState(gameState)[attributeName] + changeFromState(gameState)
     }
 
     dispatch('setAttributeValue', { attributeName, objectFromState, valueFromState })

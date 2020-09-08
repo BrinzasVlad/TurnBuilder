@@ -15,7 +15,11 @@
         @change="(newAttributeSelector) => attributeSelectorChange(newAttributeSelector)"
       />
       <span class="keep-whitespace"> by </span>
-      <input type="number" v-model.number.lazy="numberValue" />
+      <game-spec-selector-value-number
+        :selector="effect.valueSelector"
+        :specialOptions="specialOptions"
+        @change="(newValueSelector) => valueSelectorChange(newValueSelector)"
+      />
     </div>
 </template>
 
@@ -24,6 +28,7 @@ import AttributeTypes from '@/utils/AttributeTypes'
 import EffectChangeAttributeBy from '@/js-classes/EffectChangeAttributeBy'
 import vSelect from 'vue-select'
 import GameSpecSelectorAttribute from './GameSpecSelectorAttribute.vue'
+import GameSpecSelectorValueNumber from './GameSpecSelectorValueNumber.vue'
 
 export default {
   name: 'GameSpecEffectChangeAttributeBy',
@@ -39,12 +44,8 @@ export default {
   },
   components: {
     vSelect,
-    GameSpecSelectorAttribute
-  },
-  data () {
-    return {
-      lastSelectedOption: 'increase'
-    }
+    GameSpecSelectorAttribute,
+    GameSpecSelectorValueNumber
   },
   computed: {
     console: () => console,
@@ -52,34 +53,26 @@ export default {
     effectClass: () => EffectChangeAttributeBy,
     selectOptions: () => ['increase', 'decrease'],
     currentOption () {
-      if (this.effect.valueToChangeBy === undefined || this.effect.valueToChangeBy === 0) return this.lastSelectedOption
-      else if (this.effect.valueToChangeBy > 0) return 'increase'
-      else return 'decrease'
+      if (this.effect.shouldDecrease) return 'decrease'
+      else return 'increase'
     },
-    expectedType: () => AttributeTypes.NUMBER,
-    numberValue: {
-      get () {
-        if (this.effect.valueToChangeBy === undefined) return null
-        else return Math.abs(this.effect.valueToChangeBy)
-      },
-      set (newValue) {
-        if (this.currentOption === 'increase') this.effect.valueToChangeBy = newValue
-        else this.effect.valueToChangeBy = -newValue
-
-        this.$emit('change', this.effect)
-      // TODO: is mutating the prop directly then emitting an event about it redundant?
-      }
-    }
+    expectedType: () => AttributeTypes.NUMBER
   },
   methods: {
     increaseDecreaseChange (newOption) {
-      this.lastSelectedOption = newOption
-      if (this.effect.valueToChangeBy !== undefined) {
-        this.effect.valueToChangeBy *= -1 // Since the selection changed, the sign got reversed
-      }
+      if (newOption === 'decrease') this.effect.shouldDecrease = true
+      else this.effect.shouldDecrease = false
+
+      this.$emit('change', this.effect)
+      // TODO: is mutating the prop directly then emitting an event about it redundant?
     },
     attributeSelectorChange (newAttributeSelector) {
       this.effect.attributeSelector = newAttributeSelector
+      this.$emit('change', this.effect)
+      // TODO: is mutating the prop directly then emitting an event about it redundant?
+    },
+    valueSelectorChange (newValueSelector) {
+      this.effect.valueSelector = newValueSelector
       this.$emit('change', this.effect)
       // TODO: is mutating the prop directly then emitting an event about it redundant?
     }
