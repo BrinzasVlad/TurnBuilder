@@ -16,14 +16,14 @@
 </template>
 
 <script>
-import SelectorValueTileAt from '@/js-classes/SelectorValueTileAt'
+import SelectorValueExactTile from '@/js-classes/SelectorValueExactTile'
 import GameSpecSelectorValueNumber from './GameSpecSelectorValueNumber.vue'
 
 export default {
   name: 'GameSpecSelectorValueTileAt',
   props: {
     selector: {
-      type: SelectorValueTileAt,
+      type: SelectorValueExactTile,
       required: true
     },
     specialOptions: {
@@ -37,7 +37,7 @@ export default {
   computed: {
     console: () => console,
     text: () => 'tile at row ... and column ...',
-    selectorClass: () => SelectorValueTileAt
+    selectorClass: () => SelectorValueExactTile
   },
   methods: {
     rowSelectorChange (newRowSelector) {
