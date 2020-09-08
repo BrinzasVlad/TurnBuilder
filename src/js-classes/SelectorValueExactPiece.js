@@ -1,7 +1,7 @@
 import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from './SelectorValue'
 
-export default class SelectorValuePieceAt extends SelectorValue {
+export default class SelectorValueExactPiece extends SelectorValue {
   constructor (tileSelector) {
     super()
     this._tileSelector = tileSelector
