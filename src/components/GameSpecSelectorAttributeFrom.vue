@@ -1,5 +1,5 @@
 <template>
-    <div class="game-spec-selector-attribute-from-attr  display-row">
+    <div class="game-spec-selector-attribute-from  display-row">
       <span class="keep-whitespace">from </span>
       <game-spec-selector-value-choose-type
         :selector="selector.valueSelector"
@@ -24,15 +24,15 @@
 <script>
 import AttributeTypes from '@/utils/AttributeTypes'
 import Attribute from '@/js-classes/Attribute'
-import SelectorAttributeFromAttr from '@/js-classes/SelectorAttributeFromAttr'
+import SelectorAttributeFrom from '@/js-classes/SelectorAttributeFrom'
 import vSelect from 'vue-select'
 import GameSpecSelectorValueChooseType from './GameSpecSelectorValueChooseType.vue'
 
 export default {
-  name: 'GameSpecSelectorAttributeFromAttr',
+  name: 'GameSpecSelectorAttributeFrom',
   props: {
     selector: {
-      type: SelectorAttributeFromAttr,
+      type: SelectorAttributeFrom,
       required: true
     },
     expectedType: {
@@ -51,7 +51,7 @@ export default {
   computed: {
     console: () => console,
     text: () => 'from ... attribute ...',
-    selectorClass: () => SelectorAttributeFromAttr,
+    selectorClass: () => SelectorAttributeFrom,
     // Number and text values cannot have attributes of their own
     forbiddenFromValueTypes: () => [AttributeTypes.NUMBER, AttributeTypes.TEXT],
     valueType () {
