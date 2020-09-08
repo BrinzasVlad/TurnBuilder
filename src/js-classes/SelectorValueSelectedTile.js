@@ -2,7 +2,7 @@ import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from './SelectorValue'
 
 export default class SelectorValueSelectedTile extends SelectorValue {
-  getType () {
+  getValueType () {
     return AttributeTypes.TILE
   }
 
