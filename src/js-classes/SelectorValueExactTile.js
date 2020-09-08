@@ -1,7 +1,7 @@
 import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from './SelectorValue'
 
-export default class SelectorValueTileAt extends SelectorValue {
+export default class SelectorValueExactTile extends SelectorValue {
   constructor (rowSelector, columnSelector) {
     super()
     this._rowSelector = rowSelector
