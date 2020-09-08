@@ -1,6 +1,7 @@
 import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from '@/js-classes/SelectorValue'
 import SelectorAttribute from '@/js-classes/SelectorAttribute'
+import Condition from '@/js-classes/Condition'
 import Effect from '@/js-classes/Effect'
 
 export function deduceTypeOf (value) {
@@ -48,6 +49,13 @@ export function createAttributeSelector (attributeBearingObjectToReturn, attribu
     } }
   }
   return new TestSelectorAttribute()
+}
+
+export function createCondition (shouldBeTrue = true) {
+  class TestCondition extends Condition {
+    isTrue (_gameState, _triggerArgs) { return shouldBeTrue }
+  }
+  return new TestCondition()
 }
 
 export function createEffect (functionToExecute = ( (_gameState, _triggerArgs) => {} )) {
