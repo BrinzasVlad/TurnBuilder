@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import SelectorValuePieceAt from '@/js-classes/SelectorValuePieceAt'
+import SelectorValueExactPiece from '@/js-classes/SelectorValueExactPiece'
 import GameSpecSelectorValueTile from './GameSpecSelectorValueTile.vue'
 
 export default {
   name: 'GameSpecSelectorValuePieceAt',
   props: {
     selector: {
-      type: SelectorValuePieceAt,
+      type: SelectorValueExactPiece,
       required: true
     },
     specialOptions: {
@@ -31,7 +31,7 @@ export default {
   computed: {
     console: () => console,
     text: () => 'the piece at ...',
-    selectorClass: () => SelectorValuePieceAt
+    selectorClass: () => SelectorValueExactPiece
   },
   methods: {
     tileSelectorChange (newTileSelector) {
