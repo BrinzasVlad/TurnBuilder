@@ -1,5 +1,6 @@
 import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from '@/js-classes/SelectorValue'
+import SelectorAttribute from '@/js-classes/SelectorAttribute'
 import Effect from '@/js-classes/Effect'
 
 export function deduceTypeOf (value) {
@@ -31,6 +32,22 @@ export function createValueSelector (valueToReturn, valueType = null) {
     getValue (_gameState, _triggerArgs) { return (_finalGameState) => valueToReturn }
   }
   return new TestSelectorValue()
+}
+
+export function createAttributeSelector (attributeBearingObjectToReturn, attributeNameToReturn, attributeType = null) {
+  let selectorAttributeType = attributeType
+  // If not given the attribute type, try to deduce it
+  if (selectorAttributeType === null) {
+    selectorAttributeType = deduceTypeOf(attributeBearingObjectToReturn[attributeNameToReturn])
+  }
+  class TestSelectorAttribute extends SelectorAttribute {
+    getAttributeType () { return selectorAttributeType }
+    getAttribute (_gameState, _triggerArgs) { return {
+      attributeName: attributeNameToReturn,
+      objectFromState: (_finalGameState) => attributeBearingObjectToReturn
+    } }
+  }
+  return new TestSelectorAttribute()
 }
 
 export function createEffect (functionToExecute = ( (_gameState, _triggerArgs) => {} )) {
