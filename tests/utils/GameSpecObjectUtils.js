@@ -1,5 +1,6 @@
 import AttributeTypes from '@/utils/AttributeTypes'
 import SelectorValue from '@/js-classes/SelectorValue'
+import Effect from '@/js-classes/Effect'
 
 export function deduceTypeOf (value) {
   switch (typeof value) {
@@ -30,4 +31,11 @@ export function createValueSelector (valueToReturn, valueType = null) {
     getValue (_gameState, _triggerArgs) { return (_finalGameState) => valueToReturn }
   }
   return new TestSelectorValue()
+}
+
+export function createEffect (functionToExecute = ( (_gameState, _triggerArgs) => {} )) {
+  class TestEffect extends Effect {
+    execute (gameState, triggerArgs) { functionToExecute(gameState, triggerArgs) }
+  }
+  return new TestEffect()
 }
