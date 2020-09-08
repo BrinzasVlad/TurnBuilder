@@ -3,6 +3,7 @@ import SelectorValue from '@/js-classes/SelectorValue'
 import SelectorAttribute from '@/js-classes/SelectorAttribute'
 import Condition from '@/js-classes/Condition'
 import Effect from '@/js-classes/Effect'
+import Attribute from '@/js-classes/Attribute'
 
 export function deduceTypeOf (value) {
   switch (typeof value) {
@@ -63,4 +64,8 @@ export function createEffect (functionToExecute = ( (_gameState, _triggerArgs) =
     execute (gameState, triggerArgs) { functionToExecute(gameState, triggerArgs) }
   }
   return new TestEffect()
+}
+
+export function createAttribute (name = 'Dummy', type = AttributeTypes.TEXT) {
+  return new Attribute(name, type)
 }
