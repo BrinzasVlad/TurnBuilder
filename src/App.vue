@@ -77,4 +77,14 @@ body {
 .v-select .vs__actions {
   padding: 0 6px 0 3px;
 }
+
+.v-select .vs__dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.v-select .vs__dropdown-option {
+  min-width: fit-content;
+}
 </style>
